@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buchalteria Polska — Biuro Rachunkowe Warszawa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#F5EDD5;
+--navy:#0D1B2A;--navy-mid:#1A2E42;--navy-light:#2A4155;
+--off-white:#F8F6F0;--text:#0D1B2A;--muted:#5A6B7A;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--off-white);overflow-x:hidden}
+
+/* ===== EDITOR PANEL ===== */
+#editor-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1e293b;color:#f1f5f9;font-family:monospace;font-size:13px;border-top:2px solid #C9A84C;display:flex;align-items:center;gap:0;height:48px}
+#editor-toggle{background:#C9A84C;color:#0D1B2A;border:none;padding:0 18px;height:100%;cursor:pointer;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0}
+#editor-toggle:hover{background:#E8C97A}
+#editor-hint{padding:0 16px;color:#94a3b8;font-size:12px;white-space:nowrap}
+#editor-field-wrap{flex:1;display:flex;align-items:center;gap:8px;padding:0 12px;overflow:hidden}
+#editor-label{color:#C9A84C;white-space:nowrap;font-size:11px;flex-shrink:0}
+#editor-input{flex:1;background:#0f172a;border:1px solid #334155;color:#f1f5f9;padding:6px 10px;font-size:13px;font-family:monospace;border-radius:3px;min-width:0}
+#editor-input:focus{outline:none;border-color:#C9A84C}
+#editor-apply{background:#C9A84C;color:#0D1B2A;border:none;padding:6px 14px;cursor:pointer;font-weight:700;border-radius:3px;white-space:nowrap;font-size:12px}
+#editor-apply:hover{background:#E8C97A}
+#editor-copy-btn{background:#334155;color:#f1f5f9;border:none;padding:6px 14px;cursor:pointer;border-radius:3px;white-space:nowrap;font-size:12px;margin-left:4px}
+#editor-copy-btn:hover{background:#475569}
+#editor-field-wrap{display:none}
+#editor-field-wrap.active{display:flex}
+
+/* Highlight editable on hover */
+body.edit-mode [data-edit]:hover{outline:2px dashed #C9A84C;outline-offset:2px;cursor:text;background:rgba(201,168,76,.06)!important}
+body.edit-mode [data-edit].editing{outline:2px solid #C9A84C;outline-offset:2px;background:rgba(201,168,76,.08)!important}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background .4s,box-shadow .4s}
+nav.scrolled{background:rgba(13,27,42,.96);box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);letter-spacing:.04em}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;font-weight:400;letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:.55rem 1.4rem;border-radius:2px;text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.04em;transition:background .2s,transform .15s}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(201,168,76,.04) 0,rgba(201,168,76,.04) 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,rgba(201,168,76,.04) 0,rgba(201,168,76,.04) 1px,transparent 1px,transparent 60px)}
+.hero-accent{position:absolute;top:-10%;right:-5%;width:500px;height:500px;border:1px solid rgba(201,168,76,.15);border-radius:50%;pointer-events:none}
+.hero-accent2{position:absolute;top:5%;right:8%;width:300px;height:300px;border:1px solid rgba(201,168,76,.08);border-radius:50%;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 4rem;padding-top:5rem}
+.hero-tag{display:inline-block;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border-radius:1px;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,4.5rem);color:var(--white);line-height:1.1;font-weight:700;max-width:720px;margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{color:rgba(255,255,255,.65);font-size:1.1rem;font-weight:300;max-width:520px;line-height:1.7;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:.85rem 2rem;border-radius:2px;text-decoration:none;font-weight:500;font-size:.95rem;letter-spacing:.04em;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);padding:.85rem 2rem;border:1px solid rgba(255,255,255,.25);border-radius:2px;text-decoration:none;font-size:.95rem;letter-spacing:.04em;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.08)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700}
+.stat-label{color:rgba(255,255,255,.5);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem}
+.trust-bar{background:var(--navy-mid);padding:1.2rem 4rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.55);font-size:.85rem;letter-spacing:.04em}
+.trust-item svg{width:16px;height:16px;fill:var(--gold);flex-shrink:0}
+.trust-divider{width:1px;height:16px;background:rgba(255,255,255,.1)}
+section{padding:5rem 4rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;color:var(--gold);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin-bottom:.8rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.section-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.7;max-width:520px}
+.services{background:var(--white)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(13,27,42,.08)}
+.service-card{background:var(--white);padding:2.2rem;position:relative;overflow:hidden;cursor:default;transition:background .25s}
+.service-card:hover{background:var(--navy)}
+.service-card:hover .sc-icon{background:rgba(201,168,76,.15);color:var(--gold)}
+.service-card:hover .sc-title{color:var(--white)}
+.service-card:hover .sc-text{color:rgba(255,255,255,.55)}
+.service-card:hover .sc-arrow{color:var(--gold);transform:translateX(4px)}
+.sc-icon{width:44px;height:44px;background:var(--gold-pale);border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:background .25s,color .25s;color:var(--navy-mid);font-size:1.3rem}
+.sc-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.7rem;transition:color .25s}
+.sc-text{color:var(--muted);font-size:.9rem;line-height:1.6;font-weight:300;transition:color .25s}
+.sc-arrow{display:inline-block;margin-top:1.2rem;color:var(--gold);font-size:1.2rem;transition:transform .2s,color .25s}
+.why{background:var(--off-white)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-visual{position:relative}
+.why-big-number{font-family:'Playfair Display',serif;font-size:10rem;font-weight:700;color:rgba(201,168,76,.12);line-height:1;position:absolute;top:-2rem;left:-1.5rem;pointer-events:none;user-select:none}
+.why-card{background:var(--navy);color:var(--white);padding:2.5rem;border-radius:2px;position:relative;z-index:1}
+.why-card-title{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1rem;color:var(--white)}
+.why-card-text{color:rgba(255,255,255,.6);font-weight:300;line-height:1.7;font-size:.95rem}
+.why-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.25);color:var(--gold);padding:.5rem 1rem;border-radius:1px;font-size:.8rem;letter-spacing:.06em;margin-top:1.5rem}
+.reasons{display:flex;flex-direction:column;gap:1.5rem}
+.reason{display:flex;gap:1.2rem;align-items:flex-start}
+.reason-num{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);font-weight:700;line-height:1;padding-top:.1rem;min-width:28px}
+.reason-title{font-weight:500;font-size:.95rem;margin-bottom:.3rem}
+.reason-text{color:var(--muted);font-size:.88rem;font-weight:300;line-height:1.6}
+.industries{background:var(--navy);color:var(--white)}
+.ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.07);margin-top:3rem}
+.ind-card{background:var(--navy);padding:2rem 1.5rem;text-align:center;transition:background .25s,transform .2s;cursor:default}
+.ind-card:hover{background:var(--navy-mid);transform:translateY(-4px)}
+.ind-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.ind-name{color:rgba(255,255,255,.8);font-size:.88rem;letter-spacing:.05em}
+.ind-card:hover .ind-name{color:var(--gold)}
+.process{background:var(--white)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3.5rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(201,168,76,.2) 100%);z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 1rem}
+.step-circle{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;background:var(--white);font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);font-weight:700}
+.step-title{font-weight:500;font-size:.92rem;margin-bottom:.4rem;color:var(--navy)}
+.step-text{color:var(--muted);font-size:.82rem;font-weight:300;line-height:1.5}
+.pricing{background:var(--off-white)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.price-card{background:var(--white);padding:2.5rem;border:1px solid rgba(13,27,42,.08);border-radius:2px;position:relative;transition:transform .2s,box-shadow .2s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(13,27,42,.08)}
+.price-card.featured{background:var(--navy);border-color:var(--navy)}
+.featured-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:0 0 3px 3px;font-weight:500}
+.price-plan{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;font-weight:500}
+.price-card.featured .price-plan{color:rgba(255,255,255,.5)}
+.price-amount{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--navy);font-weight:700;margin-bottom:.3rem;line-height:1}
+.price-card.featured .price-amount{color:var(--white)}
+.price-period{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem}
+.price-card.featured .price-period{color:rgba(255,255,255,.45)}
+.price-divider{height:1px;background:rgba(13,27,42,.06);margin-bottom:1.5rem}
+.price-card.featured .price-divider{background:rgba(255,255,255,.1)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+.price-features li{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;font-weight:300}
+.price-card.featured .price-features li{color:rgba(255,255,255,.65)}
+.price-features li::before{content:'';width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='2.5'%3E%3Cpolyline points='20,6 9,17 4,12'/%3E%3C/svg%3E") center/contain no-repeat;flex-shrink:0}
+.btn-plan{display:block;text-align:center;padding:.8rem;border-radius:2px;text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.04em;transition:background .2s,transform .15s}
+.btn-plan-outline{border:1px solid rgba(13,27,42,.2);color:var(--navy)}
+.btn-plan-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-plan-gold{background:var(--gold);color:var(--navy)}
+.btn-plan-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+.testimonials{background:var(--navy)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.test-card{background:var(--navy-mid);padding:2rem;border:1px solid rgba(255,255,255,.06);border-radius:2px}
+.test-stars{display:flex;gap:3px;margin-bottom:1rem}
+.test-stars span{color:var(--gold);font-size:.9rem}
+.test-quote{color:rgba(255,255,255,.7);font-size:.9rem;font-weight:300;line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.test-author{display:flex;align-items:center;gap:.8rem}
+.test-avatar{width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.85rem;color:var(--gold);font-weight:700}
+.test-name{color:var(--white);font-size:.88rem;font-weight:500}
+.test-role{color:rgba(255,255,255,.4);font-size:.78rem;margin-top:.1rem}
+.cta-section{background:var(--gold-pale);text-align:center;padding:6rem 4rem}
+.cta-inner{max-width:640px;margin:0 auto}
+.cta-section .section-title{color:var(--navy)}
+.cta-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.7;margin-bottom:2.5rem}
+.cta-contact-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+.contact-item{display:flex;align-items:center;gap:.6rem;color:var(--navy-mid);font-size:.9rem;font-weight:400}
+.contact-item a{color:var(--navy);text-decoration:none;font-weight:500}
+.contact-item a:hover{color:var(--gold)}
+footer{background:var(--navy);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1rem;font-weight:700}
+.footer-logo span{color:var(--gold)}
+.footer-copy{color:rgba(255,255,255,.35);font-size:.8rem}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+@media(max-width:900px){
+nav{padding:1rem 1.5rem}section{padding:3.5rem 1.5rem}
+.hero-content{padding:0 1.5rem;padding-top:5rem}.hero-stats{gap:1.5rem}
+.services-grid{grid-template-columns:1fr 1fr}.why-inner{grid-template-columns:1fr}
+.ind-grid{grid-template-columns:repeat(3,1fr)}.process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+.process-steps::before{display:none}.pricing-grid{grid-template-columns:1fr}
+.test-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}
+.trust-bar{padding:1.2rem 1.5rem;gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- EDITOR BAR -->
+<div id="editor-bar">
+  <button id="editor-toggle" onclick="toggleEditMode()">✏️ РЕДАКТОР OFF</button>
+  <span id="editor-hint">← Увімкніть редактор, потім клікніть на будь-який текст щоб змінити</span>
+  <div id="editor-field-wrap">
+    <span id="editor-label">Редагуєте:</span>
+    <input id="editor-input" type="text" placeholder="Введіть новий текст..." />
+    <button id="editor-apply" onclick="applyEdit()">✓ Застосувати</button>
+    <button id="editor-copy-btn" onclick="copyHTML()">⬇ Копіювати HTML</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Buchalteria<span>Polska</span></div>
+  <ul class="nav-links">
+    <li><a href="#uslugi">Usługi</a></li>
+    <li><a href="#dlaczego">O nas</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="tel:+48221234567" class="nav-cta" data-edit="nav-phone">Zadzwoń teraz →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent2"></div>
+  <div class="hero-content">
+    <div class="hero-tag" data-edit="hero-tag">Biuro rachunkowe · Warszawa, Ochota</div>
+    <h1>Twoje finanse<br>w <em data-edit="hero-h1-em">pewnych rękach.</em><br>Od lat.</h1>
+    <p class="hero-sub" data-edit="hero-sub">Kompleksowa obsługa księgowa dla małych i średnich firm, spółek oraz jednoosobowych działalności. Precyzja, terminowość, spokój umysłu.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-primary" data-edit="hero-btn1">Bezpłatna konsultacja →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num" data-edit="stat1-num">15+</div><div class="stat-label" data-edit="stat1-label">Lat doświadczenia</div></div>
+      <div><div class="stat-num" data-edit="stat2-num">200+</div><div class="stat-label" data-edit="stat2-label">Obsługiwanych firm</div></div>
+      <div><div class="stat-num" data-edit="stat3-num">0</div><div class="stat-label" data-edit="stat3-label">Kar podatkowych</div></div>
+      <div><div class="stat-num" data-edit="stat4-num">100%</div><div class="stat-label" data-edit="stat4-label">Terminowych rozliczeń</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg> <span data-edit="trust1">Certyfikowany księgowy</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span data-edit="trust2">OC ubezpieczone</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg> <span data-edit="trust3">Obsługa KSeF</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg> <span data-edit="trust4">Wsparcie w języku ukraińskim</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="uslugi">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-tag">Oferta</div>
+        <h2 class="section-title">Kompleksowe usługi<br>rachunkowe</h2>
+      </div>
+      <p class="section-sub" style="text-align:right">Dobieramy rozwiązania do specyfiki Twojej firmy — nie oferujemy szablonów, tylko indywidualne podejście.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card"><div class="sc-icon">📊</div><div class="sc-title" data-edit="s1-title">Prowadzenie ksiąg rachunkowych</div><p class="sc-text" data-edit="s1-text">Pełna obsługa finansowa zgodna z polskim prawem bilansowym. Miesięczne raporty i bieżące wsparcie.</p><div class="sc-arrow">→</div></div>
+      <div class="service-card"><div class="sc-icon">📋</div><div class="sc-title" data-edit="s2-title">Rozliczenia podatkowe (VAT, CIT, PIT)</div><p class="sc-text" data-edit="s2-text">Terminowe deklaracje, JPK, optymalizacja podatkowa. Zero kar od US — gwarantujemy.</p><div class="sc-arrow">→</div></div>
+      <div class="service-card"><div class="sc-icon">👥</div><div class="sc-title" data-edit="s3-title">Obsługa kadr i płac</div><p class="sc-text" data-edit="s3-text">Listy płac, umowy, ZUS, PPK. Kompleksowe wsparcie HR dla Twoich pracowników.</p><div class="sc-arrow">→</div></div>
+      <div class="service-card"><div class="sc-icon">🌐</div><div class="sc-title" data-edit="s4-title">Faktury zagraniczne i WHT</div><p class="sc-text" data-edit="s4-text">Rozliczanie platform cyfrowych (Meta, Google, Booking.com, OpenAI). Podatek u źródła i IFT-2R.</p><div class="sc-arrow">→</div></div>
+      <div class="service-card"><div class="sc-icon">🏫</div><div class="sc-title" data-edit="s5-title">Obsługa placówek oświatowych</div><p class="sc-text" data-edit="s5-text">Księgowość szkół, przedszkoli i żłobków. Dotacje, subwencja oświatowa, sprawozdawczość.</p><div class="sc-arrow">→</div></div>
+      <div class="service-card"><div class="sc-icon">📈</div><div class="sc-title" data-edit="s6-title">Raportowanie finansowe</div><p class="sc-text" data-edit="s6-text">Przejrzyste raporty dla zarządu, właścicieli i inwestorów. Dashboard finansowy co miesiąc.</p><div class="sc-arrow">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="dlaczego">
+  <div class="section-inner">
+    <div class="why-inner">
+      <div class="why-visual">
+        <div class="why-big-number" data-edit="why-big-num">15</div>
+        <div class="why-card fade-up">
+          <div class="why-card-title" data-edit="why-card-title">Dlaczego klienci zostają z nami latami?</div>
+          <p class="why-card-text" data-edit="why-card-text">Nie jesteśmy anonimową maszyną do podpisywania dokumentów. Znamy Twoją firmę, rozumiemy branżę i reagujemy zanim pojawi się problem.</p>
+          <div class="why-badge" data-edit="why-badge">⭐ 4.9/5 · 120 opinii Google</div>
+        </div>
+      </div>
+      <div class="reasons fade-up">
+        <div class="section-tag">Nasze przewagi</div>
+        <h2 class="section-title" style="margin-bottom:2rem">Zaufanie budujemy<br>na wynikach</h2>
+        <div class="reason"><div class="reason-num">01</div><div><div class="reason-title" data-edit="r1-title">Precyzja i doświadczenie</div><p class="reason-text" data-edit="r1-text">15 lat obsługi firm różnych branż. Nasi specjaliści to certyfikowani księgowi z praktyką w US i ZUS.</p></div></div>
+        <div class="reason"><div class="reason-num">02</div><div><div class="reason-title" data-edit="r2-title">Indywidualne podejście</div><p class="reason-text" data-edit="r2-text">Jeden opiekun dla Twojej firmy. Zawsze wiesz, do kogo dzwonisz. Odpowiadamy w ciągu 2h roboczych.</p></div></div>
+        <div class="reason"><div class="reason-num">03</div><div><div class="reason-title" data-edit="r3-title">Nowoczesne technologie</div><p class="reason-text" data-edit="r3-text">Pracujemy w chmurze (Symfonia, Comarch, iFirma). Pełna obsługa KSeF. Dokumenty przez aplikację mobilną.</p></div></div>
+        <div class="reason"><div class="reason-num">04</div><div><div class="reason-title" data-edit="r4-title">Obsługa w języku ukraińskim</div><p class="reason-text" data-edit="r4-text">Nasz zespół obsługuje klientów również po ukraińsku — bez barier językowych w kwestiach podatkowych.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--gold)">Branże</div>
+    <h2 class="section-title" style="color:var(--white)">Znamy specyfikę<br>Twojej branży</h2>
+    <div class="ind-grid fade-up">
+      <div class="ind-card"><span class="ind-icon">🏥</span><div class="ind-name" data-edit="ind1">Medyczna</div></div>
+      <div class="ind-card"><span class="ind-icon">🛒</span><div class="ind-name" data-edit="ind2">E-commerce</div></div>
+      <div class="ind-card"><span class="ind-icon">💻</span><div class="ind-name" data-edit="ind3">IT / Software</div></div>
+      <div class="ind-card"><span class="ind-icon">🏗️</span><div class="ind-name" data-edit="ind4">Budowlana</div></div>
+      <div class="ind-card"><span class="ind-icon">✈️</span><div class="ind-name" data-edit="ind5">Lotnicza / Stewardzi</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:1rem">
+      <div class="section-tag">Jak zaczynamy</div>
+      <h2 class="section-title">Cztery kroki do spokoju<br>finansowego</h2>
+    </div>
+    <div class="process-steps fade-up">
+      <div class="step"><div class="step-circle">01</div><div class="step-title" data-edit="p1-title">Bezpłatna konsultacja</div><p class="step-text" data-edit="p1-text">Omawiamy potrzeby Twojej firmy, dotychczasowe rozliczenia i oczekiwania.</p></div>
+      <div class="step"><div class="step-circle">02</div><div class="step-title" data-edit="p2-title">Oferta i umowa</div><p class="step-text" data-edit="p2-text">Przygotowujemy indywidualną wycenę. Umowa z jasnym zakresem i warunkami OC.</p></div>
+      <div class="step"><div class="step-circle">03</div><div class="step-title" data-edit="p3-title">Przekazanie dokumentów</div><p class="step-text" data-edit="p3-text">Przenosimy księgi od poprzedniego biura lub zakładamy nową dokumentację.</p></div>
+      <div class="step"><div class="step-circle">04</div><div class="step-title" data-edit="p4-title">Bieżąca obsługa</div><p class="step-text" data-edit="p4-text">Miesięczne raporty, terminowe deklaracje, Twój opiekun zawsze pod ręką.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="cennik">
+  <div class="section-inner">
+    <div class="section-tag">Cennik</div>
+    <h2 class="section-title">Przejrzyste ceny.<br>Bez ukrytych opłat.</h2>
+    <div class="pricing-grid fade-up">
+      <div class="price-card">
+        <div class="price-plan" data-edit="plan1-name">Starter</div>
+        <div class="price-amount" data-edit="plan1-price">od 350 zł</div>
+        <div class="price-period" data-edit="plan1-period">netto / miesiąc</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-edit="plan1-f1">Do 30 dokumentów/miesiąc</li>
+          <li data-edit="plan1-f2">JPK VAT, deklaracje PIT/CIT</li>
+          <li data-edit="plan1-f3">Obsługa 1 pracownika (ZUS)</li>
+          <li data-edit="plan1-f4">Dostęp do panelu online</li>
+          <li data-edit="plan1-f5">Email i telefon w godz. biurowych</li>
+        </ul>
+        <a href="#kontakt" class="btn-plan btn-plan-outline" data-edit="plan1-btn">Zapytaj o ofertę</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge" data-edit="plan2-badge">Najpopularniejszy</div>
+        <div class="price-plan" data-edit="plan2-name">Business</div>
+        <div class="price-amount" style="color:var(--gold)" data-edit="plan2-price">od 700 zł</div>
+        <div class="price-period" data-edit="plan2-period">netto / miesiąc</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-edit="plan2-f1">Do 100 dokumentów/miesiąc</li>
+          <li data-edit="plan2-f2">Pełna obsługa VAT + WHT</li>
+          <li data-edit="plan2-f3">Kadry i płace do 5 os.</li>
+          <li data-edit="plan2-f4">KSeF + faktury zagraniczne</li>
+          <li data-edit="plan2-f5">Dedykowany opiekun</li>
+          <li data-edit="plan2-f6">Raport finansowy co miesiąc</li>
+        </ul>
+        <a href="#kontakt" class="btn-plan btn-plan-gold" data-edit="plan2-btn">Zacznij teraz →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-plan" data-edit="plan3-name">Enterprise</div>
+        <div class="price-amount" data-edit="plan3-price">Indywidualnie</div>
+        <div class="price-period" data-edit="plan3-period">wycena po analizie</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-edit="plan3-f1">Nieograniczona liczba dokumentów</li>
+          <li data-edit="plan3-f2">Pełna obsługa spółek (sp. z o.o.)</li>
+          <li data-edit="plan3-f3">Kadry i płace bez limitu</li>
+          <li data-edit="plan3-f4">Raportowanie dla zarządu</li>
+          <li data-edit="plan3-f5">Obsługa w j. ukraińskim</li>
+          <li data-edit="plan3-f6">Priorytetowe wsparcie 24h</li>
+        </ul>
+        <a href="#kontakt" class="btn-plan btn-plan-outline" data-edit="plan3-btn">Umów konsultację</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--gold)">Opinie klientów</div>
+    <h2 class="section-title" style="color:var(--white)">Co mówią o nas<br>przedsiębiorcy?</h2>
+    <div class="test-grid fade-up">
+      <div class="test-card">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-quote" data-edit="t1-quote">Współpracuję z Buchalteria Polska od 4 lat. Żadna deklaracja nie spóźniła się ani razu. Polecam każdemu, kto chce mieć święty spokój.</p>
+        <div class="test-author"><div class="test-avatar" data-edit="t1-avatar">AW</div><div><div class="test-name" data-edit="t1-name">Anna Wiśniewska</div><div class="test-role" data-edit="t1-role">Właścicielka, klinika medyczna</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-quote" data-edit="t2-quote">Jako firma IT potrzebowałem specjalistów od faktur z zagranicy. Rozliczenia z Google i Meta przebiegają bezbłędnie, WHT zawsze pod kontrolą.</p>
+        <div class="test-author"><div class="test-avatar" data-edit="t2-avatar">MK</div><div><div class="test-name" data-edit="t2-name">Michał Kowalczyk</div><div class="test-role" data-edit="t2-role">CEO, agencja digital</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-quote" data-edit="t3-quote">Можливість спілкуватися українською — велике полегшення. Всі документи зрозумілі, відповіді приходять швидко. Дякую за чудову роботу!</p>
+        <div class="test-author"><div class="test-avatar" data-edit="t3-avatar">ОД</div><div><div class="test-name" data-edit="t3-name">Oksana Dvorak</div><div class="test-role" data-edit="t3-role">Przedsiębiorczyni, e-commerce</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="kontakt">
+  <div class="cta-inner fade-up">
+    <div class="section-tag">Kontakt</div>
+    <h2 class="section-title">Zacznij z bezpłatną<br>konsultacją dziś</h2>
+    <p class="cta-sub" data-edit="cta-sub">Odpowiadamy w ciągu 2 godzin w dni robocze. Pierwsza rozmowa — bez zobowiązań, bez ukrytych opłat.</p>
+    <a href="tel:+48221234567" class="btn-primary" style="display:inline-flex;font-size:1.05rem;padding:1rem 2.5rem" data-edit="cta-phone">📞 Zadzwoń: +48 22 123 45 67</a>
+    <div class="cta-contact-row">
+      <div class="contact-item">✉️ <a href="#" data-edit="cta-email">biuro@buchalteria-polska.pl</a></div>
+      <div class="contact-item" data-edit="cta-address">📍 al. Bohaterów Września 18, Ochota, Warszawa</div>
+      <div class="contact-item" data-edit="cta-hours">🕐 Pn–Pt: 8:00–17:00</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Buchalteria<span>Polska</span> Sp. z o.o.</div>
+  <div class="footer-copy" data-edit="footer-copy">© 2026 Buchalteria Polska · al. Bohaterów Września 18, Warszawa</div>
+  <div class="footer-links"><a href="#">Polityka prywatności</a><a href="#">RODO</a><a href="#">Regulamin</a></div>
+</footer>
+
+<script>
+// ===== SCROLL =====
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
+}, {threshold: 0.15});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// ===== EDITOR =====
+let editMode = false;
+let currentEl = null;
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  const btn = document.getElementById('editor-toggle');
+  const hint = document.getElementById('editor-hint');
+  const wrap = document.getElementById('editor-field-wrap');
+  btn.textContent = editMode ? '✏️ РЕДАКТОР ON' : '✏️ РЕДАКТОР OFF';
+  btn.style.background = editMode ? '#22c55e' : '#C9A84C';
+  hint.style.display = editMode ? 'none' : 'block';
+  if(!editMode) { wrap.classList.remove('active'); if(currentEl) currentEl.classList.remove('editing'); currentEl=null; }
+}
+
+document.querySelectorAll('[data-edit]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if(!editMode) return;
+    e.preventDefault(); e.stopPropagation();
+    if(currentEl) currentEl.classList.remove('editing');
+    currentEl = this;
+    this.classList.add('editing');
+    const wrap = document.getElementById('editor-field-wrap');
+    wrap.classList.add('active');
+    document.getElementById('editor-hint').style.display = 'none';
+    document.getElementById('editor-label').textContent = 'Редагуєте [' + this.dataset.edit + ']:';
+    const inp = document.getElementById('editor-input');
+    inp.value = this.innerText;
+    inp.focus(); inp.select();
+  });
+});
+
+document.getElementById('editor-input').addEventListener('keydown', function(e) {
+  if(e.key === 'Enter') applyEdit();
+  if(e.key === 'Escape') { if(currentEl) currentEl.classList.remove('editing'); currentEl=null; }
+});
+
+function applyEdit() {
+  if(!currentEl) return;
+  const val = document.getElementById('editor-input').value;
+  currentEl.innerText = val;
+  currentEl.classList.remove('editing');
+  currentEl = null;
+  document.getElementById('editor-field-wrap').classList.remove('active');
+}
+
+function copyHTML() {
+  // Remove editor bar and edit-mode class before copying
+  const bar = document.getElementById('editor-bar');
+  bar.style.display = 'none';
+  document.body.classList.remove('edit-mode');
+  // Remove all data-edit attributes from copy
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('[data-edit]').forEach(el => el.removeAttribute('data-edit'));
+  // Remove editor bar from clone
+  const cloneBar = clone.querySelector('#editor-bar');
+  if(cloneBar) cloneBar.remove();
+  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  navigator.clipboard.writeText(html).then(() => {
+    const btn = document.getElementById('editor-copy-btn');
+    btn.textContent = '✓ Скопійовано!';
+    btn.style.background = '#22c55e';
+    btn.style.color = '#fff';
+    setTimeout(() => { btn.textContent = '⬇ Копіювати HTML'; btn.style.background=''; btn.style.color=''; }, 2500);
+  });
+  bar.style.display = 'flex';
+  if(editMode) document.body.classList.add('edit-mode');
+}
+</script>
+</body>
+</html>

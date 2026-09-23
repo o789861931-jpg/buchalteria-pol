@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="email=no, telephone=no">
+<title>Buchalteria Polska — Biuro Rachunkowe Warszawa</title>
+<meta name="description" content="Biuro rachunkowe Warszawa. Obsługa firm zagranicznych, VAT, CIT. 30+ lat doświadczenia, 80+ międzynarodowych firm. PL/RU.">
+
+  <!-- Preconnect for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* --- Brand colors --- */
+  --gold:#C9A84C;            --gold-rgb:201,168,76;
+  --gold-light:#E8C97A;      --gold-light-rgb:232,201,122;
+  --gold-dark:#B8943D;       --gold-dark-rgb:184,148,61;
+  --gold-darker:#A07830;     --gold-darker-rgb:160,120,48;
+  --gold-pale:#F5EDD5;       --gold-pale-rgb:245,237,213;
+  --gold-pale-2:#EFE3C5;     --gold-pale-2-rgb:239,227,197;
+
+  --navy:#0D1B2A;            --navy-rgb:13,27,42;
+  --navy-mid:#1A2E42;        --navy-mid-rgb:26,46,66;
+  --navy-light:#2A4155;      --navy-light-rgb:42,65,85;
+  --navy-slate:#142233;      --navy-slate-rgb:20,34,51;
+  --navy-deep:#0A1520;       --navy-deep-rgb:10,21,32;
+  --navy-darkest:#060E18;    --navy-darkest-rgb:6,14,24;
+
+  /* --- Neutrals --- */
+  --off-white:#F7F8FA;       --off-white-rgb:247,248,250;
+  --gray-50:#F6F8F9;
+  --gray-100:#EEF1F4;
+  --muted:#56636F;           --muted-rgb:86,99,111;
+  --white:#FFFFFF;           --white-rgb:255,255,255;
+  --black-rgb:0,0,0;
+
+  /* --- Semantic / status --- */
+  --danger:#DC3232;          --danger-rgb:220,50,50;
+}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--navy);background:var(--off-white);overflow-x:hidden}
+.page{display:none}.page.active{display:block}
+nav{position:fixed;top:0;left:0;right:0;z-index:250;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background .4s,box-shadow .4s}
+nav.scrolled,nav.dark{background:rgba(var(--navy-rgb),.96);box-shadow:0 2px 20px rgba(var(--black-rgb),.3)}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:700;color:var(--white);letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:.55rem}
+.nav-logo-img{height:48px;width:48px;display:block;flex-shrink:0;filter:contrast(1.12) saturate(1.08)}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:rgba(var(--white-rgb),.8);text-decoration:none;font-size:.9rem;cursor:pointer;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-cta{background:var(--gold);color:var(--navy);padding:.55rem 1.4rem;border-radius:2px;text-decoration:none;font-size:.9rem;font-weight:500;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gold-light)}
+.lang-switcher{display:flex;gap:4px}
+.lang-btn{background:transparent;border:1px solid rgba(var(--white-rgb),.25);color:rgba(var(--white-rgb),.7);padding:.3rem .7rem;border-radius:2px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:"DM Sans",sans-serif}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn:active{transform:translateY(1px)}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.wa-float{position:fixed;bottom:80px;right:24px;z-index:200;width:56px;height:56px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(var(--navy-rgb),.35);text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s;border:1px solid rgba(var(--gold-rgb),.35)}
+.wa-float:hover{transform:scale(1.08);background:var(--gold)}
+.wa-float:active{transform:scale(.96)}
+.wa-float:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wa-float svg{width:26px;height:26px;fill:var(--white)}
+.wa-tooltip{position:absolute;right:68px;background:var(--navy);color:white;font-size:.78rem;padding:.4rem .8rem;border-radius:4px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.wa-float:hover .wa-tooltip{opacity:1}
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(var(--gold-rgb),.04) 0,rgba(var(--gold-rgb),.04) 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,rgba(var(--gold-rgb),.04) 0,rgba(var(--gold-rgb),.04) 1px,transparent 1px,transparent 60px)}
+.hero-accent{position:absolute;top:-10%;right:-5%;width:500px;height:500px;border:1px solid rgba(var(--gold-rgb),.15);border-radius:50%;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 4rem;padding-top:5rem}
+.hero-tag{display:inline-block;background:rgba(var(--gold-rgb),.15);border:1px solid rgba(var(--gold-rgb),.3);color:var(--gold);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border-radius:1px;margin-bottom:1.5rem}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(2.8rem,5.5vw,4.5rem);color:var(--white);line-height:1.1;font-weight:700;max-width:720px;margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{color:rgba(var(--white-rgb),.65);font-size:1.1rem;font-weight:300;max-width:520px;line-height:1.7;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:.85rem 2rem;border-radius:2px;font-weight:500;font-size:.95rem;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;border:none}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);padding:.85rem 2rem;border:1px solid rgba(var(--white-rgb),.25);border-radius:2px;font-size:.95rem;cursor:pointer;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline:active{transform:translateY(1px)}
+.btn-primary:disabled,.btn-primary[disabled]{background:var(--muted) !important;color:rgba(var(--white-rgb),.7) !important;cursor:not-allowed !important;transform:none !important;box-shadow:none !important;opacity:.7}
+.btn-primary:disabled:hover,.btn-primary[disabled]:hover{background:var(--muted) !important;transform:none !important}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(var(--white-rgb),.08);flex-wrap:wrap}
+.stat-num{font-family:"Playfair Display",serif;font-size:2rem;color:var(--gold);font-weight:700}
+.stat-num-wide{font-size:clamp(1.4rem,6vw,2rem);white-space:nowrap}
+.stat-label{color:rgba(var(--white-rgb),.5);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem}
+.stat-label-wide{max-width:200px;line-height:1.5}
+.trust-bar{background:var(--navy-mid);padding:1.2rem 4rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.6rem;color:rgba(var(--white-rgb),.55);font-size:.85rem}
+.trust-item svg{width:16px;height:16px;fill:none;stroke:var(--gold);stroke-width:2;flex-shrink:0}
+.trust-divider{width:1px;height:16px;background:rgba(var(--white-rgb),.1)}
+section{padding:5rem 4rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;color:var(--gold-darker);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:.8rem}
+.section-title{font-family:"Playfair Display",serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:1rem;color:var(--navy)}
+.section-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.7;max-width:520px}
+.services{background:var(--white)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(var(--navy-rgb),.08);align-items:stretch}
+.service-card{background:var(--white);padding:2.2rem;transition:background .25s;display:flex;flex-direction:column;height:100%}
+.service-card:hover{background:var(--navy)}
+.service-card:hover .sc-title{color:var(--white)}
+.service-card:hover .sc-text{color:rgba(var(--white-rgb),.55)}
+.service-card:hover .sc-arrow{color:var(--gold-darker);transform:translateX(4px)}
+.sc-icon{width:48px;height:48px;background:var(--gold-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--navy-mid);transition:background .25s,color .25s}
+.sc-title{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;margin-bottom:.7rem;transition:color .25s}
+.sc-text{color:var(--muted);font-size:.9rem;line-height:1.6;font-weight:300;transition:color .25s}
+.sc-arrow{display:inline-block;margin-top:1.2rem;color:var(--gold-darker);font-size:1.2rem;transition:transform .2s,color .25s}
+.why{background:var(--off-white)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-visual{position:relative}
+.why-big-number{font-family:"Playfair Display",serif;font-size:10rem;font-weight:700;color:rgba(var(--gold-rgb),.12);line-height:1;position:absolute;top:-2rem;left:-1.5rem;pointer-events:none;user-select:none}
+.why-card{background:var(--navy);color:var(--white);padding:2.5rem;border-radius:2px;position:relative;z-index:1}
+.why-card-title{font-family:"Playfair Display",serif;font-size:1.5rem;margin-bottom:1rem;color:var(--white)}
+.why-card-text{color:rgba(var(--white-rgb),.6);font-weight:300;line-height:1.7;font-size:.95rem}
+.why-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(var(--gold-rgb),.15);border:1px solid rgba(var(--gold-rgb),.25);color:var(--gold-darker);padding:.5rem 1rem;border-radius:1px;font-size:.8rem;margin-top:1.5rem}
+.reasons{display:flex;flex-direction:column;gap:1.5rem}
+.reason{display:flex;gap:1.2rem;align-items:flex-start}
+.reason-num{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--gold-darker);font-weight:700;min-width:28px}
+.reason-title{font-weight:500;font-size:.95rem;margin-bottom:.3rem}
+.reason-text{color:var(--muted);font-size:.88rem;font-weight:300;line-height:1.6}
+.industries{background:var(--navy);color:var(--white)}
+.ind-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(var(--white-rgb),.07);margin-top:3rem;align-items:stretch}
+.ind-card{background:var(--navy);padding:2rem 1.5rem;text-align:center;transition:background .25s,transform .2s;display:flex;flex-direction:column;justify-content:center;height:100%}
+.ind-card:hover{background:var(--navy-mid);transform:translateY(-4px)}
+.ind-icon{display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:rgba(var(--white-rgb),.7);transition:color .25s}
+.ind-name{color:rgba(var(--white-rgb),.8);font-size:.88rem}
+.ind-card:hover .ind-name{color:var(--gold)}.ind-card:hover .ind-icon{display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:rgba(var(--white-rgb),.7);transition:color .25s}.ind-card:hover .ind-icon svg{stroke:var(--gold)}
+.process{background:var(--white)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:3.5rem;position:relative}
+.process-steps::before{content:"";position:absolute;top:28px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:1px;background:linear-gradient(90deg,var(--gold),rgba(var(--gold-rgb),.2));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 1rem}
+.step-circle{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold-darker);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;background:var(--white);font-family:"Playfair Display",serif;font-size:1.1rem;color:var(--gold-darker);font-weight:700}
+.step-title{font-weight:500;font-size:.92rem;margin-bottom:.4rem;color:var(--navy)}
+.step-text{color:var(--muted);font-size:.82rem;font-weight:300;line-height:1.5}
+
+
+
+
+.cta-section{background:var(--gold-pale);text-align:center;padding:6rem 4rem}
+.cta-section-compact{padding:4rem}
+.cta-inner{max-width:640px;margin:0 auto}
+.cta-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.7;margin-bottom:2.5rem}
+.cta-contact-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
+.contact-item{display:flex;align-items:center;gap:.6rem;color:var(--navy-mid);font-size:.88rem}.contact-item svg{flex-shrink:0}.contact-item svg{stroke:var(--navy-mid);flex-shrink:0}
+.contact-item a{color:var(--navy);text-decoration:none;font-weight:500}
+.contact-item a:hover{color:var(--gold)}
+.contact-item a:visited{color:var(--navy)}
+.konsultacja-form{background:var(--white);border-radius:4px;padding:2.5rem;max-width:560px;margin:2.5rem auto 0;text-align:left;box-shadow:0 4px 30px rgba(var(--navy-rgb),.08)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-row .form-group{margin-bottom:0}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group label{font-size:.82rem;font-weight:500;color:var(--navy)}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid rgba(var(--navy-rgb),.15);border-radius:2px;padding:.7rem 1rem;font-size:.9rem;font-family:"DM Sans",sans-serif;color:var(--navy);background:var(--off-white);transition:border-color .2s}
+.form-group select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:2.5rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D1B2A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:16px}
+.form-group input.invalid,.form-group select.invalid,.form-group textarea.invalid{border-color:var(--danger)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(var(--navy-rgb),.35)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold-darker)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-check{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:1.2rem}
+.form-check input{margin-top:3px;accent-color:var(--gold-darker)}
+.form-check label{font-size:.78rem;color:var(--muted);line-height:1.5}
+.form-success{display:none;background:rgba(var(--gold-rgb),.1);border:1px solid var(--gold);border-radius:2px;padding:1rem;text-align:center;color:var(--navy);font-weight:500;margin-top:.5rem}
+.form-error{display:none;background:rgba(var(--danger-rgb),.1);border:1px solid var(--danger);border-radius:2px;padding:1rem;text-align:center;color:var(--danger);font-weight:500;margin-top:.5rem}
+.page-hero{background:var(--navy);padding:8rem 4rem 4rem;text-align:center}
+.page-hero h1{font-family:"Playfair Display",serif;color:var(--white);font-size:clamp(2rem,4vw,3rem);margin-bottom:.8rem}
+.page-hero p{color:rgba(var(--white-rgb),.55);font-size:1rem;font-weight:300}
+.cennik-section{background:var(--off-white);padding:5rem 4rem}
+
+
+.price-card.featured{background:var(--navy);border-color:var(--navy)}
+
+.price-plan{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;font-weight:500}
+.price-card.featured .price-plan{color:rgba(var(--white-rgb),.5)}
+.price-amount{font-family:"Playfair Display",serif;font-size:2.5rem;color:var(--navy);font-weight:700;margin-bottom:.3rem;line-height:1}
+.price-card.featured .price-amount{color:var(--white)}
+.price-period{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem}
+.price-card.featured .price-period{color:rgba(var(--white-rgb),.45)}
+.price-divider{height:1px;background:rgba(var(--navy-rgb),.06);margin-bottom:1.5rem}
+.price-card.featured .price-divider{background:rgba(var(--white-rgb),.1)}
+
+.price-features li{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;font-weight:300}
+.price-card.featured .price-features li{color:rgba(var(--white-rgb),.65)}
+.price-features li::before{content:"";width:18px;height:18px;min-width:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A07830' stroke-width='2'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E") center/contain no-repeat;flex-shrink:0}
+.btn-plan{display:block;text-align:center;padding:.8rem;border-radius:2px;font-size:.9rem;font-weight:500;cursor:pointer;border:none;transition:background .2s}
+.btn-plan-outline{border:1px solid rgba(var(--navy-rgb),.2);color:var(--navy);background:transparent}
+.btn-plan-outline:hover{border-color:var(--gold-darker);color:var(--gold-darker)}
+.cennik-faq{background:var(--white);padding:5rem 4rem}
+.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;max-width:720px}
+.faq-item{border:1px solid rgba(var(--navy-rgb),.08);border-radius:2px;overflow:hidden}
+.faq-q{padding:1.2rem 1.5rem;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white)}
+.faq-q:hover{background:var(--off-white)}
+.faq-a{padding:0 1.5rem;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.7}
+.faq-item.open .faq-a{max-height:200px;padding:1rem 1.5rem}
+.faq-arrow{transition:transform .3s;color:var(--gold-darker)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.onas-section{background:var(--white);padding:5rem 4rem}
+.onas-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:4rem}
+.onas-text p{color:var(--muted);font-weight:300;line-height:1.8;font-size:.95rem;margin-bottom:1rem}
+.onas-values{background:var(--off-white);padding:5rem 4rem}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;align-items:stretch}
+.value-card{background:var(--white);padding:2rem;border-radius:2px;border-left:3px solid var(--gold);display:flex;flex-direction:column;height:100%}
+.value-icon{margin-bottom:1rem;display:flex;align-items:center}
+.value-title{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.value-text{color:var(--muted);font-size:.88rem;font-weight:300;line-height:1.6}
+
+
+
+
+
+
+
+.rodo-section{background:var(--white);padding:5rem 4rem}
+.rodo-content{max-width:800px;margin:0 auto}
+.rodo-content h2{font-family:"Playfair Display",serif;font-size:1.4rem;color:var(--navy);margin:2rem 0 .8rem}
+.rodo-content p,.rodo-content li{color:var(--muted);font-size:.92rem;font-weight:300;line-height:1.8;margin-bottom:.5rem}
+.rodo-content ul{padding-left:1.5rem}
+.rodo-content strong{color:var(--navy);font-weight:500}
+footer{background:var(--navy);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:"Playfair Display",serif;color:var(--white);font-size:1rem;font-weight:700;cursor:pointer}
+.footer-logo span{color:var(--gold)}
+.footer-copy{color:rgba(var(--white-rgb),.35);font-size:.8rem}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(var(--white-rgb),.4);text-decoration:none;font-size:.8rem;cursor:pointer;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .ind-grid{grid-template-columns:repeat(2,1fr) !important}
+nav{padding:.8rem 1.2rem;gap:.4rem}
+.nav-links{display:none}
+.nav-right{gap:.5rem}
+.lang-switcher{display:none}
+.nav-logo{font-size:1.1rem}
+.nav-logo-img{height:38px;width:38px}
+.lang-btn{padding:.4rem .65rem;font-size:.75rem;min-height:36px}
+.nav-cta{padding:.55rem 1rem;font-size:.8rem}
+section{padding:3.5rem 1.5rem}
+.hero-content{padding:0 1.5rem;padding-top:5rem}
+.services-grid,.pricing-grid,
+.why-inner,.onas-grid,.values-grid{grid-template-columns:1fr;gap:2rem}
+.ind-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(var(--white-rgb),.07);margin-top:3rem;align-items:stretch}
+.process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+.process-steps::before{display:none}
+
+footer{flex-direction:column;text-align:center}
+.trust-bar{padding:1.2rem 1.5rem;gap:1.5rem}
+.form-row{grid-template-columns:1fr}
+.page-hero{padding:7rem 1.5rem 3rem}
+.cennik-section,.cennik-faq,.onas-section,.onas-values,.team-section,.rodo-section{padding:3.5rem 1.5rem}
+}
+
+@media(max-width:480px){
+  .nav-logo-text{display:none}
+  .nav-logo-img{height:34px;width:34px}
+}
+
+.pricing-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:2rem;margin-top:3rem;align-items:stretch}
+.price-card{background:var(--white);padding:2.5rem;border:1px solid rgba(var(--navy-rgb),.08);border-radius:2px;position:relative;transition:transform .2s,box-shadow .2s;display:flex !important;flex-direction:column !important;min-height:500px}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(var(--navy-rgb),.08)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;flex:1 !important}
+
+@media(max-width:600px){
+  .ind-grid{grid-template-columns:repeat(2,1fr) !important}
+  .pricing-grid{grid-template-columns:1fr !important}
+  .faq-list{max-width:100%}
+  .cennik-section{padding:2.5rem 1.2rem}
+  .cennik-faq{padding:2.5rem 1.2rem}
+}
+
+/* =============================================
+   PREMIUM UI/UX UPGRADE
+   ============================================= */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --shadow-sm: 0 2px 8px rgba(var(--navy-rgb),.06);
+  --shadow-md: 0 8px 24px rgba(var(--navy-rgb),.10);
+  --shadow-lg: 0 20px 60px rgba(var(--navy-rgb),.15);
+  --shadow-accent: 0 8px 32px rgba(var(--gold-rgb),.25);
+  --ease-out-expo: cubic-bezier(0.16,1,0.3,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s var(--ease-out-expo);
+  --transition-slow: 0.6s var(--ease-out-expo);
+}
+
+/* --- Smooth page transitions --- */
+.page { animation: none; }
+.page.active { animation: pageIn 0.4s var(--ease-out-expo) both; }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- NAV enhancements --- */
+nav {
+  backdrop-filter: blur(0px);
+  transition: background .4s, box-shadow .4s, backdrop-filter .4s;
+}
+nav.scrolled, nav.dark {
+  background: rgba(var(--navy-rgb),.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(var(--gold-rgb),.12), 0 4px 24px rgba(var(--black-rgb),.2);
+}
+.nav-logo {
+  transition: opacity .2s;
+}
+.nav-logo:hover { opacity: .85; }
+
+.nav-links a {
+  position: relative;
+  transition: color .25s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width .3s var(--ease-out-expo);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: all .25s var(--ease-out-expo);
+  box-shadow: 0 2px 12px rgba(var(--gold-rgb),.2);
+}
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--white-rgb),.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(var(--gold-rgb),.35);
+}
+.nav-cta:hover::before { opacity: 1; }
+.nav-cta:active { transform: translateY(0); }
+.nav-cta:visited { color: var(--white); }
+.wa-float:visited { color: inherit; }
+
+.lang-btn {
+  border-radius: 2px;
+  transition: all .2s var(--ease-out-expo);
+}
+.lang-btn.active {
+  box-shadow: 0 2px 8px rgba(var(--gold-rgb),.3);
+}
+
+/* --- HERO enhancements --- */
+.hero-tag {
+  border-radius: 20px;
+  animation: heroTagIn .8s var(--ease-out-expo) .2s both;
+  backdrop-filter: blur(4px);
+}
+@keyframes heroTagIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero h1 entrance */
+.hero h1 {
+  animation: heroH1In .9s var(--ease-out-expo) .35s both;
+}
+@keyframes heroH1In {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-sub {
+  animation: heroSubIn .9s var(--ease-out-expo) .5s both;
+}
+@keyframes heroSubIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-btns {
+  animation: heroBtnsIn .9s var(--ease-out-expo) .65s both;
+}
+@keyframes heroBtnsIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-stats {
+  animation: heroStatsIn .9s var(--ease-out-expo) .8s both;
+}
+@keyframes heroStatsIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Floating hero accent */
+.hero-accent {
+  animation: floatCircle 8s ease-in-out infinite;
+}
+@keyframes floatCircle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.04); }
+}
+
+/* --- BUTTONS premium --- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  box-shadow: 0 4px 16px rgba(var(--gold-rgb),.3);
+  transition: all .25s var(--ease-out-expo);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--white-rgb),.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(var(--gold-rgb),.45);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(var(--gold-rgb),.25); }
+
+/* Ripple effect on click */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  background: rgba(var(--white-rgb),.15);
+  border-radius: inherit;
+  transform: scale(0);
+  opacity: 1;
+  transition: transform .5s, opacity .5s;
+}
+.btn-primary:active::after {
+  transform: scale(2);
+  opacity: 0;
+  transition: 0s;
+}
+
+.btn-outline {
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: all .25s var(--ease-out-expo);
+}
+.btn-outline:hover {
+  background: rgba(var(--gold-rgb),.06);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* --- SCROLL ANIMATIONS enhanced --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s var(--ease-out-expo), transform .7s var(--ease-out-expo);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* Staggered children */
+.fade-up.visible .service-card:nth-child(1) { transition-delay: 0s; }
+.fade-up.visible .service-card:nth-child(2) { transition-delay: .08s; }
+.fade-up.visible .service-card:nth-child(3) { transition-delay: .16s; }
+.fade-up.visible .service-card:nth-child(4) { transition-delay: .24s; }
+.fade-up.visible .service-card:nth-child(5) { transition-delay: .32s; }
+.fade-up.visible .service-card:nth-child(6) { transition-delay: .40s; }
+
+/* --- SERVICE CARDS premium --- */
+.service-card {
+  transition: background .3s var(--ease-out-expo), transform .3s var(--ease-out-expo), box-shadow .3s;
+  cursor: default;
+}
+.service-card:hover {
+  background: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(var(--navy-rgb),.2);
+  z-index: 1;
+  position: relative;
+}
+.sc-icon {
+  transition: background .3s, transform .3s var(--ease-spring), box-shadow .3s;
+  border-radius: 10px;
+}
+.service-card:hover .sc-icon {
+  background: rgba(var(--gold-rgb),.18);
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(var(--gold-rgb),.2);
+}
+.service-card:hover .sc-icon svg { stroke: var(--gold); }
+.sc-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  transition: transform .3s var(--ease-spring), color .3s;
+}
+.service-card:hover .sc-arrow { transform: translateX(6px); }
+
+/* --- WHY CARD glassmorphism --- */
+.why-card {
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+  border: 1px solid rgba(var(--gold-rgb),.12);
+  box-shadow: 0 20px 60px rgba(var(--navy-rgb),.3), inset 0 1px 0 rgba(var(--white-rgb),.05);
+  transition: transform .4s var(--ease-out-expo), box-shadow .4s;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(var(--navy-rgb),.35), 0 0 0 1px rgba(var(--gold-rgb),.2);
+}
+.why-badge {
+  border-radius: 20px;
+  transition: background .25s, border-color .25s;
+}
+.why-badge:hover {
+  background: rgba(var(--gold-rgb),.2);
+}
+
+/* --- REASON items hover --- */
+.reason {
+  padding: .8rem;
+  border-radius: 8px;
+  transition: background .25s;
+}
+.reason:hover { background: rgba(var(--gold-rgb),.05); }
+.reason-num {
+  transition: transform .3s var(--ease-spring);
+}
+.reason:hover .reason-num { transform: scale(1.15); }
+
+/* --- INDUSTRY CARDS --- */
+.ind-card {
+  transition: background .3s, transform .3s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+}
+.ind-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform .3s var(--ease-out-expo);
+  transform-origin: left;
+}
+.ind-card:hover::before { transform: scaleX(1); }
+.ind-card:hover {
+  background: rgba(var(--navy-mid-rgb),.9);
+  transform: translateY(-6px);
+}
+.ind-icon { transition: transform .3s var(--ease-spring), color .3s; }
+.ind-card:hover .ind-icon { transform: scale(1.1); }
+
+/* --- PROCESS STEPS --- */
+.step-circle {
+  transition: all .3s var(--ease-spring);
+  box-shadow: 0 0 0 0 rgba(var(--gold-rgb),0);
+}
+.step:hover .step-circle {
+  background: var(--gold);
+  color: var(--navy);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(var(--gold-rgb),.15);
+}
+
+/* --- PRICE CARDS --- */
+.price-card {
+  border-radius: 12px;
+  border: 1px solid rgba(var(--navy-rgb),.08);
+  transition: transform .3s var(--ease-out-expo), box-shadow .3s;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(var(--navy-rgb),.12);
+}
+.price-card.featured {
+  border: 1px solid rgba(var(--gold-rgb),.25);
+  box-shadow: 0 8px 32px rgba(var(--navy-rgb),.15), inset 0 1px 0 rgba(var(--white-rgb),.05);
+}
+.price-card.featured:hover {
+  box-shadow: 0 24px 60px rgba(var(--navy-rgb),.25), 0 0 0 1px rgba(var(--gold-rgb),.3);
+}
+.btn-plan {
+  border-radius: 6px;
+  transition: all .25s var(--ease-out-expo);
+  letter-spacing: .03em;
+}
+.btn-plan-outline:hover {
+  transform: translateY(-1px);
+  background: rgba(var(--gold-darker-rgb),.06);
+  border-color: var(--gold-darker);
+  color: var(--gold-darker);
+}
+
+/* --- VALUE CARDS --- */
+.value-card {
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  transition: transform .3s var(--ease-out-expo), box-shadow .3s;
+  box-shadow: var(--shadow-sm);
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.value-icon { transition: transform .3s var(--ease-spring); }
+.value-card:hover .value-icon { transform: scale(1.08); }
+
+/* --- FAQ ITEMS --- */
+.faq-item {
+  border-radius: 8px;
+  border: 1px solid rgba(var(--navy-rgb),.08);
+  overflow: hidden;
+  transition: box-shadow .25s;
+}
+.faq-item:hover { box-shadow: var(--shadow-sm); }
+.faq-item.open { box-shadow: var(--shadow-md); border-color: rgba(var(--gold-rgb),.2); }
+.faq-q { transition: background .2s, color .2s; }
+.faq-a { transition: max-height .4s var(--ease-out-expo), padding .4s; }
+
+/* --- CTA SECTION --- */
+.cta-section {
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold-pale-2) 50%, var(--gold-pale) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(var(--gold-rgb),.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: ctaGlow 6s ease-in-out infinite;
+}
+@keyframes ctaGlow {
+  0%, 100% { transform: scale(1) translate(0,0); opacity: .7; }
+  50%       { transform: scale(1.2) translate(-20px, 20px); opacity: 1; }
+}
+
+/* --- FORM ENHANCEMENTS --- */
+.konsultacja-form {
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(var(--navy-rgb),.1), 0 1px 0 rgba(var(--white-rgb),.8);
+  border: 1px solid rgba(var(--navy-rgb),.06);
+  transition: box-shadow .3s;
+}
+.konsultacja-form:hover {
+  box-shadow: 0 12px 50px rgba(var(--navy-rgb),.12), 0 1px 0 rgba(var(--white-rgb),.8);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border-radius: 6px;
+  transition: border-color .25s, box-shadow .25s, background .25s;
+  background: var(--gray-50);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold-darker);
+  box-shadow: 0 0 0 3px rgba(var(--gold-rgb),.12);
+  background: var(--white);
+}
+
+/* --- TRUST BAR --- */
+.trust-bar {
+  background: linear-gradient(90deg, var(--navy-slate) 0%, var(--navy-mid) 50%, var(--navy-slate) 100%);
+}
+.trust-item {
+  transition: color .25s, transform .25s;
+}
+.trust-item:hover {
+  color: rgba(var(--white-rgb),.85);
+  transform: translateY(-1px);
+}
+.trust-item svg {
+  transition: transform .3s var(--ease-spring);
+}
+.trust-item:hover svg { transform: scale(1.15); }
+
+/* --- FOOTER --- */
+footer {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-darkest) 100%);
+  border-top: 1px solid rgba(var(--gold-rgb),.1);
+}
+.footer-logo { transition: opacity .2s; }
+.footer-logo:hover { opacity: .8; }
+.footer-links a {
+  transition: color .25s, transform .25s;
+  display: inline-block;
+}
+.footer-links a:hover {
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* --- WA FLOAT premium --- */
+.wa-float {
+  box-shadow: 0 4px 20px rgba(var(--navy-rgb),.35), 0 0 0 0 rgba(var(--gold-rgb),.4);
+  transition: transform .3s var(--ease-spring), box-shadow .3s, background .3s;
+  animation: waPulse 3s ease-in-out infinite 2s;
+}
+@keyframes waPulse {
+  0%   { box-shadow: 0 4px 20px rgba(var(--navy-rgb),.35), 0 0 0 0 rgba(var(--gold-rgb),.35); }
+  50%  { box-shadow: 0 4px 20px rgba(var(--navy-rgb),.35), 0 0 0 10px rgba(var(--gold-rgb),0); }
+  100% { box-shadow: 0 4px 20px rgba(var(--navy-rgb),.35), 0 0 0 0 rgba(var(--gold-rgb),0); }
+}
+.wa-float:hover {
+  transform: scale(1.08);
+  background: var(--gold);
+  box-shadow: 0 8px 28px rgba(var(--gold-rgb),.35);
+  animation: none;
+}
+.wa-tooltip {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(var(--navy-rgb),.2);
+  font-size: .8rem;
+  padding: .5rem 1rem;
+}
+
+/* --- PAGE HERO glow --- */
+.page-hero {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-slate) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 200px;
+  background: radial-gradient(ellipse, rgba(var(--gold-rgb),.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero h1 {
+  animation: pageHeroIn .7s var(--ease-out-expo) both;
+}
+.page-hero p {
+  animation: pageHeroIn .7s var(--ease-out-expo) .1s both;
+}
+@keyframes pageHeroIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- STAT NUMBERS counter animation --- */
+.stat-num {
+  transition: color .3s;
+}
+
+/* --- SECTION TAG decoration --- */
+.section-tag {
+  position: relative;
+  padding-left: .8rem;
+}
+.section-tag::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 3px; height: 12px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* --- ONAS data card --- */
+.onas-grid > div:last-child > div {
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(var(--navy-rgb),.2);
+  transition: transform .3s, box-shadow .3s;
+}
+.onas-grid > div:last-child > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(var(--navy-rgb),.25);
+}
+
+/* --- Scroll progress indicator --- */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 9999;
+  width: 0%;
+  transition: width .1s linear;
+  pointer-events: none;
+}
+
+/* --- Selection color --- */
+::selection {
+  background: rgba(var(--gold-rgb),.25);
+  color: var(--navy);
+}
+
+
+/* =============================================
+   PREMIUM ROUND 2 — Deeper refinements
+   ============================================= */
+
+/* --- HERO: animated gradient background --- */
+.hero-grid {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(var(--gold-rgb),.035) 0, rgba(var(--gold-rgb),.035) 1px, transparent 1px, transparent 50px),
+    repeating-linear-gradient(90deg, rgba(var(--gold-rgb),.035) 0, rgba(var(--gold-rgb),.035) 1px, transparent 1px, transparent 50px);
+}
+
+/* Second decorative circle */
+.hero-accent {
+  top: -10%; right: -5%;
+  border: 1px solid rgba(var(--gold-rgb),.15);
+  box-shadow: inset 0 0 60px rgba(var(--gold-rgb),.04);
+}
+
+
+
+
+
+/* --- HERO TAG: pill style --- */
+.hero-tag {
+  border-radius: 100px;
+  background: rgba(var(--gold-rgb),.12);
+  border: 1px solid rgba(var(--gold-rgb),.25);
+  backdrop-filter: blur(8px);
+  font-weight: 500;
+  letter-spacing: .2em;
+}
+
+/* --- HERO h1: text shadow glow --- */
+.hero h1 em {
+  text-shadow: 0 0 40px rgba(var(--gold-rgb),.3);
+}
+
+/* --- STAT items hover --- */
+.hero-stats > div {
+  cursor: default;
+  transition: transform .3s var(--ease-spring);
+  padding: .5rem .8rem;
+  border-radius: 8px;
+}
+.hero-stats > div:hover {
+  transform: translateY(-2px);
+  background: rgba(var(--white-rgb),.04);
+}
+.stat-num {
+  text-shadow: 0 0 20px rgba(var(--gold-rgb),.2);
+}
+
+/* --- TRUST BAR items --- */
+.trust-bar {
+  border-top: 1px solid rgba(var(--white-rgb),.04);
+  border-bottom: 1px solid rgba(var(--white-rgb),.04);
+}
+
+/* --- SERVICES section --- */
+.services {
+  background: var(--white);
+}
+.services-grid {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(var(--navy-rgb),.06);
+}
+.service-card {
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+/* --- WHY section --- */
+.why { 
+  background: linear-gradient(160deg, var(--off-white) 0%, var(--gray-100) 100%);
+}
+.why-big-number {
+  font-size: 12rem;
+  opacity: .8;
+  animation: bigNumFloat 8s ease-in-out infinite;
+}
+@keyframes bigNumFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* --- INDUSTRIES section --- */
+.industries {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+.ind-grid {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ind-card {
+  padding: 2.2rem 1.2rem;
+}
+.ind-name {
+  font-size: .8rem;
+  letter-spacing: .04em;
+  font-weight: 400;
+}
+
+/* --- PROCESS section --- */
+.process {
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+}
+.step-circle {
+  background: var(--white);
+  position: relative;
+}
+/* Glow ring on step hover */
+.step:hover .step-circle {
+  box-shadow: 0 0 0 4px rgba(var(--gold-rgb),.15), 0 0 0 8px rgba(var(--gold-rgb),.06);
+}
+
+/* --- ONAS section typography --- */
+.onas-text p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.onas-text p strong {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* --- DATA card in Onas --- */
+.onas-grid > div:last-child > div {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%) !important;
+  border: 1px solid rgba(var(--gold-rgb),.1);
+}
+
+/* --- CENNIK section --- */
+.cennik-section {
+  background: linear-gradient(160deg, var(--off-white) 0%, var(--gray-100) 100%);
+}
+.pricing-grid {
+  gap: 1.5rem !important;
+}
+.price-card {
+  padding: 2.8rem !important;
+}
+.price-amount {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.price-card.featured .price-amount {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.price-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+/* --- FAQ enhancements --- */
+.cennik-faq {
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+}
+.faq-q {
+  font-size: .95rem;
+  padding: 1.3rem 1.5rem;
+}
+.faq-arrow {
+  font-size: 1rem;
+  opacity: .6;
+  transition: transform .35s var(--ease-out-expo), opacity .2s;
+}
+.faq-item.open .faq-arrow {
+  opacity: 1;
+}
+
+/* --- VALUES section --- */
+.onas-values {
+  background: linear-gradient(160deg, var(--off-white) 0%, var(--gray-100) 100%);
+}
+.value-card {
+  border-left-width: 4px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
+  padding: 2.2rem;
+}
+.value-title {
+  letter-spacing: -.01em;
+}
+
+/* --- FORM fields polish --- */
+.form-group label {
+  letter-spacing: .02em;
+  font-size: .8rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border-radius: 8px;
+  padding: .8rem 1rem;
+  font-size: .92rem;
+  border: 1.5px solid rgba(var(--navy-rgb),.1);
+}
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(var(--gold-rgb),.4);
+}
+
+/* Submit button */
+#submit-btn {
+  letter-spacing: .06em;
+  font-size: .88rem;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- FOOTER polish --- */
+.footer-copy {
+  font-size: .78rem;
+  letter-spacing: .02em;
+}
+
+/* --- PAGE HERO polish --- */
+.page-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  letter-spacing: -.02em;
+}
+
+/* --- RODO section --- */
+.rodo-section {
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+}
+.rodo-content h2 {
+  letter-spacing: -.01em;
+}
+
+/* --- Smooth focus ring everywhere --- */
+:focus-visible {
+  outline: 2px solid rgba(var(--gold-rgb),.5);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Better typography --- */
+.section-title {
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+.section-tag {
+  font-size: .72rem;
+  letter-spacing: .22em;
+}
+
+/* --- Glassmorphism nav on scroll --- */
+nav.scrolled {
+  border-bottom: 1px solid rgba(var(--gold-rgb),.08);
+}
+
+/* --- Contact items polish --- */
+.contact-item {
+  padding: .4rem .6rem;
+  border-radius: 6px;
+  transition: background .2s, transform .2s;
+}
+.contact-item:hover {
+  background: rgba(var(--gold-rgb),.08);
+  transform: translateY(-1px);
+}
+
+/* --- CTA button in hero section --- */
+.cta-inner .btn-primary {
+  font-size: 1rem;
+  padding: 1rem 2.5rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 8px;
+}
+
+/* --- Stagger fade animations for different elements --- */
+.ind-card { transition-delay: calc(var(--i, 0) * 60ms); }
+.service-card { padding: 2.5rem; }
+
+/* --- MOBILE refinements --- */
+@media(max-width:768px) {
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .section-title { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .service-card { padding: 1.8rem; }
+  .value-card { padding: 1.6rem; }
+  .price-card { padding: 2rem !important; }
+  .why-big-number { font-size: 7rem; }
+  .step-circle { width: 46px; height: 46px; font-size: .95rem; }
+  .ind-card { padding: 1.4rem 1rem; }
+}
+
+
+/* ===== MODERN BUTTONS =====  */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 50%, var(--gold-darker) 100%) !important;
+  color: var(--navy) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: .85rem 2.2rem !important;
+  font-weight: 600 !important;
+  font-size: .88rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 20px rgba(var(--gold-rgb),.35), 0 1px 3px rgba(var(--gold-rgb),.2) !important;
+  transition: all .3s var(--ease-spring) !important;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--white-rgb),.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+  border-radius: inherit;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 36px rgba(var(--gold-rgb),.5), 0 4px 12px rgba(var(--gold-rgb),.3) !important;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%) !important;
+}
+.btn-primary:active {
+  transform: translateY(-1px) scale(.99) !important;
+  box-shadow: 0 4px 16px rgba(var(--gold-rgb),.3) !important;
+}
+
+/* Shimmer sweep animation */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(var(--white-rgb),.25), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+.btn-primary:hover::after {
+  animation: btnShimmer .6s ease forwards;
+}
+@keyframes btnShimmer {
+  to { left: 150%; }
+}
+
+.btn-outline {
+  border-radius: 50px !important;
+  border: 1.5px solid rgba(var(--white-rgb),.3) !important;
+  color: rgba(var(--white-rgb),.9) !important;
+  background: rgba(var(--white-rgb),.06) !important;
+  backdrop-filter: blur(8px) !important;
+  font-weight: 500 !important;
+  font-size: .88rem !important;
+  letter-spacing: .04em !important;
+  transition: all .3s var(--ease-spring) !important;
+  padding: .85rem 2.2rem !important;
+}
+.btn-outline:hover {
+  border-color: rgba(var(--white-rgb),.7) !important;
+  background: rgba(var(--white-rgb),.15) !important;
+  color: var(--white) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(var(--black-rgb),.15) !important;
+}
+
+.btn-plan-outline {
+  border-radius: 50px !important;
+  border: 1.5px solid rgba(var(--navy-rgb),.2) !important;
+  color: var(--navy) !important;
+  background: transparent !important;
+  font-weight: 500 !important;
+  transition: all .3s !important;
+}
+.btn-plan-outline:hover {
+  border-color: var(--gold-darker) !important;
+  color: var(--gold-darker) !important;
+  background: rgba(var(--gold-darker-rgb),.06) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Nav CTA */
+.nav-cta {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 16px rgba(var(--gold-rgb),.4) !important;
+  transition: all .3s var(--ease-spring) !important;
+}
+.nav-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(var(--gold-rgb),.5) !important;
+}
+
+/* ===== SPACING & WHITE SPACE ===== */
+section { padding: 6rem 4rem !important; }
+.section-inner { max-width: 1100px !important; }
+.section-title { 
+  letter-spacing: -.03em !important;
+  line-height: 1.1 !important;
+}
+
+/* Hero — deep blue gradient */
+
+nav.scrolled, nav.dark {
+  background: rgba(var(--navy-rgb),.92) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(var(--gold-rgb),.12) !important;
+}
+
+/* White sections */
+.services { background: var(--white) !important; }
+.process { background: var(--white) !important; }
+.cennik-faq { background: var(--white) !important; }
+.onas-section { background: var(--white) !important; }
+.rodo-section { background: var(--white) !important; }
+
+/* Light blue sections */
+.why { background: var(--off-white) !important; }
+.cennik-section { background: var(--off-white) !important; }
+.onas-values { background: var(--off-white) !important; }
+
+/* Services grid */
+.services-grid { background: rgba(var(--navy-rgb),.06) !important; gap: 1.5px !important; }
+.service-card { background: var(--white) !important; }
+.service-card:hover { background: var(--navy) !important; }
+.sc-icon { background: var(--gold-pale) !important; border-radius: 12px !important; }
+.service-card:hover .sc-icon { background: rgba(var(--gold-rgb),.18) !important; }
+.service-card:hover .sc-icon svg { stroke: var(--gold) !important; }
+
+/* Why section card */
+.why-card {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%) !important;
+  border: 1px solid rgba(var(--gold-rgb),.2) !important;
+  box-shadow: 0 20px 60px rgba(var(--navy-rgb),.2), inset 0 1px 0 rgba(var(--white-rgb),.06) !important;
+}
+.why-badge {
+  background: rgba(var(--gold-rgb),.15) !important;
+  border-color: rgba(var(--gold-rgb),.3) !important;
+  color: var(--gold) !important;
+}
+
+/* Industries — deep blue */
+.industries {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-darkest) 100%) !important;
+}
+.ind-card { background: transparent !important; }
+.ind-card:hover { background: rgba(var(--white-rgb),.06) !important; }
+.ind-card::before { background: var(--gold) !important; }
+
+/* Pricing */
+.price-card.featured {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%) !important;
+  border: 1px solid rgba(var(--gold-rgb),.25) !important;
+  box-shadow: 0 8px 40px rgba(var(--navy-rgb),.2) !important;
+}
+.featured-badge {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+}
+
+/* Value cards */
+.value-card { border-left: 4px solid var(--gold) !important; }
+
+/* CTA section */
+.cta-section {
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold-pale-2) 50%, var(--gold-pale) 100%) !important;
+}
+.cta-section::before {
+  background: radial-gradient(circle, rgba(var(--gold-rgb),.12) 0%, transparent 70%) !important;
+}
+
+/* Trust bar */
+.trust-bar {
+  background: linear-gradient(90deg, var(--navy-slate) 0%, var(--navy-mid) 50%, var(--navy-slate) 100%) !important;
+}
+.trust-item svg { stroke: var(--gold) !important; fill: none !important; }
+
+/* FAQ */
+.faq-item.open { border-color: rgba(var(--gold-rgb),.3) !important; }
+
+/* Footer */
+footer {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-darkest) 100%) !important;
+  border-top: 1px solid rgba(var(--gold-rgb),.1) !important;
+}
+
+/* Section tag */
+.section-tag { color: var(--gold-darker) !important; }
+.section-tag::before { background: var(--gold) !important; }
+
+/* Scroll progress */
+#scroll-progress {
+  background: linear-gradient(90deg, var(--gold), var(--gold-light)) !important;
+}
+
+/* WhatsApp button stays green */
+.wa-float { background: var(--navy) !important; }
+.wa-float:hover { background: var(--gold) !important; }
+
+/* Page hero */
+.page-hero {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%) !important;
+}
+.page-hero::before {
+  background: radial-gradient(ellipse, rgba(var(--gold-rgb),.08) 0%, transparent 70%) !important;
+}
+
+/* Step circles */
+.step-circle {
+  border-color: var(--gold-darker) !important;
+  color: var(--gold-darker) !important;
+}
+.step:hover .step-circle {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  box-shadow: 0 0 0 6px rgba(var(--gold-rgb),.15) !important;
+}
+
+/* Process line */
+.process-steps::before {
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(var(--gold-rgb),.15) 100%) !important;
+}
+
+/* Reason numbers */
+.reason-num { color: var(--gold-darker) !important; }
+
+/* Onas data card */
+.onas-grid > div:last-child > div {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%) !important;
+  border: 1px solid rgba(var(--gold-rgb),.1) !important;
+}
+
+/* Lang buttons */
+.lang-btn.active {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--navy) !important;
+}
+.lang-btn:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
+
+/* Price amount gradient */
+.price-amount {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+.price-card.featured .price-amount {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Focus ring */
+:focus-visible { outline-color: rgba(var(--gold-rgb),.5) !important; }
+
+/* Selection */
+::selection { background: rgba(var(--gold-rgb),.25) !important; color: var(--navy) !important; }
+
+/* =============================================
+   LANGUAGE-LENGTH SAFETY NET
+   Keeps card layouts consistent regardless of
+   translation length (PL/RU/etc.) — text always
+   wraps within its own card instead of overflowing
+   or forcing mismatched card heights.
+   ============================================= */
+.sc-title,.sc-text,
+.value-title,.value-text,
+.ind-name,
+.reason-title,.reason-text,
+.step-title,.step-text,
+.price-plan,.price-amount,.price-period,
+.price-features li,
+.stat-label,.trust-item,
+.why-card-title,.why-card-text {
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+/* Explicitly disable any browser-native hyphenation site-wide —
+   text must only wrap between words, never split inside a word. */
+html, body, * {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+/* Card title/text areas grow to fill available card height so
+   footers/CTAs and card edges line up across a row regardless
+   of how much text a given language needs. */
+.sc-text,.value-text,.reason-text,.step-text{flex-grow:1}
+/* Industries: 6 narrow columns is tight for longer RU labels —
+   drop to 3 on medium screens (not just phones) to give room. */
+@media(min-width:601px) and (max-width:1100px){
+  .ind-grid{grid-template-columns:repeat(3,1fr) !important}
+}
+/* Nav can wrap gracefully if a locale's menu labels run long. */
+.nav-links{flex-wrap:wrap}
+/* Values grid: guarantee enough width for the longest single-word
+   labels in any language (e.g. RU "Непосредственность") — drop to
+   2 columns in the mid-viewport range before the 900px 1-column
+   breakpoint takes over, instead of ever squeezing/breaking a word. */
+@media (min-width:901px) and (max-width:1300px) {
+  .values-grid{grid-template-columns:repeat(2,1fr) !important}
+}
+.value-title{font-size:clamp(0.95rem,2.2vw,1.1rem)}
+/* =============================================
+   MOBILE NAV: hamburger + slide-down drawer
+   ============================================= */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:transparent;border:none;cursor:pointer;padding:0;z-index:210}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:transform .25s var(--ease-spring),opacity .2s;margin:0 auto}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-lang-mobile{display:none}
+.nav-overlay{position:fixed;inset:0;background:rgba(var(--navy-rgb),.5);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:199}
+.nav-overlay.visible{opacity:1;pointer-events:auto}
+body.menu-open{overflow:hidden}
+
+@media(max-width:900px){
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex !important;
+    flex-direction:column;
+    position:fixed;
+    top:0; right:0;
+    width:min(82vw,340px);
+    height:100vh;
+    height:100dvh;
+    background:var(--navy);
+    padding:5.5rem 1.5rem 2rem;
+    gap:0;
+    transform:translateX(100%);
+    transition:transform .3s var(--ease-spring);
+    z-index:200;
+    overflow-y:auto;
+    box-shadow:-8px 0 40px rgba(var(--navy-rgb),.3);
+  }
+  .nav-links.mobile-open{transform:translateX(0)}
+  .nav-links li{width:100%;border-bottom:1px solid rgba(var(--white-rgb),.08)}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+    min-height:52px;
+    font-size:1.05rem;
+    width:100%;
+  }
+  .nav-lang-mobile{
+    display:flex;
+    gap:.6rem;
+    padding:1.2rem 0 0;
+    border-bottom:none !important;
+  }
+  .nav-lang-mobile .lang-btn{flex:1;min-height:44px;font-size:.85rem}
+}
+/* =============================================
+   MOBILE TYPOGRAPHY & TOUCH TARGETS
+   Hero/heading sizes were floored for tablet and
+   stayed fixed all the way down to 320px — this
+   rescales them properly for phones, and brings
+   every tappable control up to a comfortable
+   min. touch size (Apple HIG / Material ~44-48px).
+   ============================================= */
+@media(max-width:600px){
+  .hero h1{font-size:clamp(1.9rem,9vw,2.5rem);line-height:1.18;max-width:100%}
+  .section-title{font-size:clamp(1.5rem,7vw,1.9rem)}
+  .page-hero h1{font-size:clamp(1.7rem,7vw,2.1rem)}
+  .hero-sub{font-size:.95rem;line-height:1.6}
+  .hero-content{padding-top:4.5rem}
+  .hero{min-height:auto;padding-bottom:3rem}
+}
+/* Buttons & CTAs: comfortable one-thumb tap size everywhere */
+.btn-primary,.btn-outline{min-height:48px}
+.nav-cta{min-height:40px;display:inline-flex;align-items:center}
+.faq-q{min-height:52px}
+.lang-btn{min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+/* Form fields: 16px minimum stops iOS Safari from
+   auto-zooming the page when a field is focused. */
+.form-group input,.form-group select,.form-group textarea{font-size:16px;min-height:48px}
+.form-group textarea{min-height:120px}
+.form-check input{width:20px;height:20px;flex-shrink:0}
+@media(max-width:600px){
+  .hero-btns{gap:.8rem}
+  .hero-btns .btn-primary,.hero-btns .btn-outline{width:100%;justify-content:center}
+  .service-card,.value-card{padding:1.6rem}
+  .price-card{padding:1.8rem}
+  .faq-q{padding:1rem 1.2rem}
+  section{padding:3rem 1.2rem}
+  .data-row{flex-direction:column;align-items:flex-start}
+  .cta-section-compact{padding:3rem 1.2rem}
+  .page-hero{padding:6.5rem 1.2rem 2.5rem}
+}
+/* =============================================
+   ACCESSIBILITY: respect reduced-motion preference
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fade-up{opacity:1 !important;transform:none !important}
+}
+
+/* Skip-to-content link: invisible until keyboard-focused */
+.skip-link{
+  position:absolute;top:-100px;left:1rem;z-index:999;
+  background:var(--gold);color:var(--navy);
+  padding:.7rem 1.2rem;border-radius:2px;
+  text-decoration:none;font-size:.9rem;font-weight:500;
+  transition:top .2s;
+}
+.skip-link:focus{top:1rem}
+/* Ensure the custom select arrow survives later background shorthand overrides */
+.form-group select,
+.form-group select:focus{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D1B2A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 1rem center;
+  background-size:16px;
+}
+</style>
+
+  <!-- Open Graph / Facebook / Telegram / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://buchalteria-polska.pl/">
+  <meta property="og:title" content="Buchalteria Polska — Biuro Rachunkowe Warszawa">
+  <meta property="og:description" content="Kompleksowa obsługa księgowa dla firm zagranicznych i polskich przedsiębiorców. 30+ lat doświadczenia, 80+ międzynarodowych firm. PL/RU/UA/BY.">
+  <meta property="og:image" content="https://buchalteria-polska.pl/logo_recolored.png">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:site_name" content="Buchalteria Polska">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buchalteria Polska — Biuro Rachunkowe Warszawa">
+  <meta name="twitter:description" content="Kompleksowa obsługa księgowa dla firm zagranicznych. 30+ lat doświadczenia w Polsce.">
+  <meta name="twitter:image" content="https://buchalteria-polska.pl/og-image.png">
+
+  <!-- Mobile browser chrome tint -->
+  <meta name="theme-color" content="#0D1B2A">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo_recolored.png">
+  <link rel="apple-touch-icon" href="logo_recolored.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Buchalteria Polska Sp. z o.o.">
+  <meta name="keywords" content="biuro rachunkowe Warszawa, księgowość, obsługa firm zagranicznych, VAT, CIT, transport, бухгалтерия Варшава">
+  <link rel="canonical" href="https://buchalteria-polska.pl/">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "Buchalteria Polska Sp. z o.o.",
+    "description": "Biuro rachunkowe w Warszawie. Obsługa firm zagranicznych, VAT, CIT, transport. 30+ lat doświadczenia, 80+ międzynarodowych firm.",
+    "url": "https://buchalteria-polska.pl",
+    "telephone": "+48222019495",
+    "email": "buchalteria.polska@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "aleja Bohaterów Września 18 lok. 42",
+      "addressLocality": "Warszawa",
+      "postalCode": "02-389",
+      "addressCountry": "PL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.2127,
+      "longitude": 20.9810
+    },
+    "openingHours": "Mo-Fr 08:00-17:00",
+    "priceRange": "od 350 zł",
+    "areaServed": "Polska",
+    "availableLanguage": ["Polish", "Russian", "Ukrainian", "Belarusian"],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+48222019495",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": ["Polish", "Russian", "Ukrainian", "Belarusian"]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+48602507422",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": ["Polish", "Russian", "Ukrainian", "Belarusian"]
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Czy cena jest stała?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cena ustalana jest w umowie i nie zmienia się bez Twojej zgody."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy mogę zrezygnować w dowolnym momencie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak. Umowę można rozwiązać z miesięcznym wypowiedzeniem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy obsługujecie firmy zagraniczne?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak, to nasza specjalność — mamy ponad 30 lat doświadczenia w obsłudze firm zagranicznych."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak wygląda przejście od poprzedniego biura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zajmujemy się całym procesem przejęcia ksiąg i dokumentacji."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Przejdz do tresci / Перейти к содержанию</a>
+
+<a class="wa-float" href="https://wa.me/48602507422" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <span class="wa-tooltip" data-i18n="wa_tooltip">Napisz na WhatsApp</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')" onkeydown="if(event.key==='Enter')showPage('home')" tabindex="0" role="link" aria-label="Buchalteria Polska - Strona glowna"><img src="logo_recolored.png" alt="Buchalteria Polska" class="nav-logo-img"><span class="nav-logo-text">Buchalteria<span>Polska</span></span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" data-i18n="nav_home">Start</a></li>
+    <li><a onclick="showPage('onas')" id="nav-onas" data-i18n="nav_onas">O nas</a></li>
+    <li><a onclick="showPage('cennik')" id="nav-cennik" data-i18n="nav_cennik">Cennik</a></li>
+    <li><a onclick="showPage('konsultacja')" id="nav-konsultacja" data-i18n="nav_konsultacja">Konsultacja</a></li>
+    <li class="nav-lang-mobile">
+      <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
+    <a class="nav-cta" href="tel:+48222019495" data-i18n="nav_cta">Zadzwoń teraz</a>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay" onclick="closeMobileMenu()"></div>
+
+<!-- HOME -->
+<main id="main-content">
+<div id="page-home" class="page active">
+<section class="hero">
+  <div class="hero-grid"></div><div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-tag" data-i18n="hero_tag">Biuro rachunkowe – Warszawa</div>
+    <h1><span data-i18n="hero_h1a">Księgowość, która chroni Twoją firmę</span> <em data-i18n="hero_h1b">przed błędami i karami</em><br><span data-i18n="hero_h1c">30 lat doświadczenia na rynku</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">Kompleksowa obsługa księgowa dla firm zagranicznych i polskich przedsiębiorców. Precyzja. Terminowość. Bezpieczeństwo.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('konsultacja')" data-i18n="hero_btn1">Umów bezpłatną konsultację</button>
+      <button class="btn-outline" onclick="showPage('cennik')" data-i18n="hero_btn2">Zobacz cennik</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">30+</div><div class="stat-label" data-i18n="stat1">Lat doświadczenia</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label" data-i18n="stat2">Języki obsługi</div></div>
+      <div><div class="stat-num">80+</div><div class="stat-label" data-i18n="stat3">Międzynarodowych firm</div></div>
+      <div><div class="stat-num stat-num-wide" data-animated="1">1 000 000 zł</div><div class="stat-label stat-label-wide" data-i18n="stat4">sumy gwarancyjnej OC</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><span data-i18n="trust1">30+ lat doświadczenia</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="trust2">Wysoka polisa OC</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><span data-i18n="trust3">Własne biuro – 2 sale konferencyjne</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><span data-i18n="trust4">PL - RU - UA - BY</span></div>
+</div>
+
+<section class="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div><div class="section-tag" data-i18n="srv_tag">Oferta</div><h2 class="section-title" data-i18n="srv_title">Kompleksowe usługi rachunkowe</h2></div>
+      <p class="section-sub" style="text-align:right" data-i18n="srv_sub">Dobieramy rozwiązania do specyfiki Twojej firmy</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3 class="sc-title" data-i18n="s1t">Księgowość pod klucz</h3><p class="sc-text" data-i18n="s1d">Przejmujemy wszystko: księgowość, JPK, VAT, PIT, CIT, kadry i roczne raporty.</p><div class="sc-arrow">&#8594;</div></div>
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3 class="sc-title" data-i18n="s2t">Obsługa firm zagranicznych</h3><p class="sc-text" data-i18n="s2d">30+ lat obsługi zagranicznych firm w Polsce. Pomagamy w rejestracji i zmianach firmy, prowadzimy księgowość i kadry oraz zapewniamy pełną obsługę.</p><div class="sc-arrow">&#8594;</div></div>
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M5 20h14"/><path d="M5 9l-2 6h4L5 9zm14 0l-2 6h4l-2-6z"/></svg></div><h3 class="sc-title" data-i18n="s3t">Prawnicy i doradcy podatkowi</h3><p class="sc-text" data-i18n="s3d">Prawo korporacyjne, umowy, spory, kontrole, legalizacja pobytu i zezwolenia na pracę.</p><div class="sc-arrow">&#8594;</div></div>
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3 class="sc-title" data-i18n="s4t">Firmy transportowe</h3><p class="sc-text" data-i18n="s4d">Licencje na transport, wypisy, dokumenty dla GITD, ewidencja kierowców.</p><div class="sc-arrow">&#8594;</div></div>
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 class="sc-title" data-i18n="s5t">Adres prawny i korespondencja</h3><p class="sc-text" data-i18n="s5d">Udostępniamy adres w Warszawie do rejestracji firmy. Odbieramy i przekazujemy korespondencję.</p><div class="sc-arrow">&#8594;</div></div>
+      <div class="service-card"><div class="sc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><h3 class="sc-title" data-i18n="s6t">Audyt i konsultacje księgowe</h3><p class="sc-text" data-i18n="s6d">Sprawdzamy księgi i rozliczenia VAT, PIT i CIT, pomagamy w wyborze formy opodatkowania oraz interpretacji przepisów.</p><div class="sc-arrow">&#8594;</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="section-inner">
+    <div class="why-inner">
+      <div class="why-visual">
+        <div class="why-big-number">30</div>
+        <div class="why-card fade-up">
+          <div class="why-card-title" data-i18n="why_title">Dlaczego klienci zostają z nami latami?</div>
+          <p class="why-card-text" data-i18n="why_text">Nie jesteśmy pośrednikami — jesteśmy wykonawcami. Pracujemy bez problemów z US, ZUS, GITD, KRS, CEIDG.</p>
+          <div class="why-badge" data-i18n="why_badge">Wysoka polisa ubezpieczeniowa w PZU</div>
+        </div>
+      </div>
+      <div class="reasons fade-up">
+        <div class="section-tag" data-i18n="why_tag">Nasze przewagi</div>
+        <h2 class="section-title" style="margin-bottom:2rem" data-i18n="why_h2">Zaufanie budujemy na wynikach</h2>
+        <div class="reason"><div class="reason-num">01</div><div><h3 class="reason-title" data-i18n="r1t">30+ lat doświadczenia międzynarodowego</h3><p class="reason-text" data-i18n="r1d">Obsługujemy zagraniczne firmy w Polsce od ponad 30 lat.</p></div></div>
+        <div class="reason"><div class="reason-num">02</div><div><h3 class="reason-title" data-i18n="r2t">Własne biuro z salami konferencyjnymi</h3><p class="reason-text" data-i18n="r2d">Klienci mogą przyjeżdżać na spotkania i prowadzić negocjacje osobiście.</p></div></div>
+        <div class="reason"><div class="reason-num">03</div><div><h3 class="reason-title" data-i18n="r3t">Szybka reakcja — odpowiedź tego samego dnia</h3><p class="reason-text" data-i18n="r3d">Jesteśmy zawsze dostępni: WhatsApp, telefon, email.</p></div></div>
+        <div class="reason"><div class="reason-num">04</div><div><h3 class="reason-title" data-i18n="r4t">4 języki: PL, UA, BY, RU</h3><p class="reason-text" data-i18n="r4d">Wyjaśniamy zasady prostym językiem — bez barier językowych.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="industries">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--gold)" data-i18n="ind_tag">Branże</div>
+    <h2 class="section-title" style="color:var(--white)" data-i18n="ind_title">Znamy specyfikę Twojej branży</h2>
+    <div class="ind-grid fade-up">
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+        <div class="ind-name" data-i18n="ind1">Transport i logistyka</div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+        <div class="ind-name" data-i18n="ind2">Budownictwo</div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span>
+        <div class="ind-name" data-i18n="ind3">Import / Eksport</div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+        <div class="ind-name" data-i18n="ind4">Firmy zagraniczne</div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <div class="ind-name" data-i18n="ind5">Cudzoziemcy w Polsce</div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span>
+        <div class="ind-name" data-i18n="ind6">Rejestracja firm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:1rem">
+      <div class="section-tag" data-i18n="proc_tag">Jak zaczynamy</div>
+      <h2 class="section-title" data-i18n="proc_title">Cztery kroki do spokoju finansowego</h2>
+    </div>
+    <div class="process-steps fade-up">
+      <div class="step"><div class="step-circle">01</div><h3 class="step-title" data-i18n="p1t">Bezpłatna konsultacja</h3><p class="step-text" data-i18n="p1d">Omawiamy potrzeby Twojej firmy.</p></div>
+      <div class="step"><div class="step-circle">02</div><h3 class="step-title" data-i18n="p2t">Oferta i umowa</h3><p class="step-text" data-i18n="p2d">Indywidualna wycena i umowa z jasnym zakresem.</p></div>
+      <div class="step"><div class="step-circle">03</div><h3 class="step-title" data-i18n="p3t">Przekazanie dokumentów</h3><p class="step-text" data-i18n="p3d">Przenosimy księgi od poprzedniego biura.</p></div>
+      <div class="step"><div class="step-circle">04</div><h3 class="step-title" data-i18n="p4t">Bieżąca obsługa</h3><p class="step-text" data-i18n="p4d">Miesięczne raporty, terminowe deklaracje.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-section">
+  <div class="cta-inner fade-up">
+    <div class="section-tag" data-i18n="cta_tag">Kontakt</div>
+    <h2 class="section-title" style="color:var(--navy)" data-i18n="cta_title">Zacznij z bezpłatną konsultacją dziś</h2>
+    <p class="cta-sub" data-i18n="cta_sub">Odpowiadamy tego samego dnia. Bez zobowiązań.</p>
+    <button class="btn-primary" style="font-size:1.05rem;padding:1rem 2.5rem;margin:0 auto" onclick="showPage('konsultacja')" data-i18n="cta_btn">Umów bezpłatną konsultację</button>
+    <div class="cta-contact-row">
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg> <a href="tel:+48222019495">+48&nbsp;222&nbsp;019&nbsp;495</a></div>
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> <a href="tel:+48602507422">+48&nbsp;602&nbsp;507&nbsp;422</a></div>
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:buchalteria.polska@gmail.com">buchalteria.polska@gmail.com</a></div>
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> aleja Bohaterów Września 18 lok. 42, 02-389 Warszawa</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- O NAS -->
+<div id="page-onas" class="page">
+<div class="page-hero"><h1 data-i18n="on_h1">O nas</h1><p data-i18n="on_sub">30+ lat doświadczenia w obsłudze firm</p></div>
+<section class="onas-section">
+  <div class="section-inner">
+    <div class="onas-grid">
+      <div>
+        <div class="section-tag" data-i18n="on_tag">Nasza historia</div>
+        <h2 class="section-title">Buchalteria Polska<br>Sp. z o.o.</h2>
+        <div class="onas-text">
+          <p data-i18n="on_p1">Biuro rachunkowe Buchalteria Polska ma <strong>ponad 30 lat doświadczenia</strong> w obsłudze firm. Obsługujemy ponad <strong>80 międzynarodowych firm</strong> i posiadamy <strong>1&nbsp;000&nbsp;000&nbsp;zł sumy gwarancyjnej OC</strong>. Specjalizujemy się w obsłudze zagranicznych firm zarejestrowanych w Polsce.</p>
+          <p data-i18n="on_p2">Posiadamy własne biuro w Warszawie z <strong>dwiema salami konferencyjnymi</strong>. Klienci mogą przyjeżdżać na spotkania i prowadzić negocjacje osobiście.</p>
+          <p data-i18n="on_p3">Oferujemy obsługę w językach: <strong>polskim, ukraińskim, białoruskim i rosyjskim</strong>.</p>
+          <p data-i18n="on_p4">Udostępniamy nasz adres jako <strong>oficjalny adres rejestracyjny firmy</strong>. Odbieramy całą korespondencję i przekazujemy klientom.</p>
+        </div>
+      </div>
+      <div style="background:var(--navy);padding:2.5rem;border-radius:2px;color:white">
+        <div class="section-tag" data-i18n="on_data_tag">Dane firmy</div>
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.8rem">
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0;border-bottom:1px solid rgba(var(--white-rgb),.08)"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem" data-i18n="on_name_lbl">Nazwa</span><span style="color:white;font-size:.85rem;font-weight:500">Buchalteria Polska Sp. z o.o.</span></div>
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0;border-bottom:1px solid rgba(var(--white-rgb),.08)"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem" data-i18n="on_addr_lbl">Adres</span><span style="color:white;font-size:.85rem;font-weight:500;text-align:right">aleja Bohaterów Września 18 lok. 42<br>02-389 Warszawa</span></div>
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0;border-bottom:1px solid rgba(var(--white-rgb),.08)"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem" data-i18n="on_tel_lbl">Telefon</span><span style="color:var(--gold);font-size:.85rem;font-weight:500"><a href="tel:+48222019495" style="color:inherit;text-decoration:none">+48&nbsp;222&nbsp;019&nbsp;495</a></span></div>
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0;border-bottom:1px solid rgba(var(--white-rgb),.08)"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem" data-i18n="on_mob_lbl">Komórka / WhatsApp</span><span style="color:var(--gold);font-size:.85rem;font-weight:500"><a href="tel:+48602507422" style="color:inherit;text-decoration:none">+48&nbsp;602&nbsp;507&nbsp;422</a></span></div>
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0;border-bottom:1px solid rgba(var(--white-rgb),.08)"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem">Email</span><span style="color:var(--gold);font-size:.85rem;font-weight:500"><a href="mailto:buchalteria.polska@gmail.com" style="color:inherit;text-decoration:none">buchalteria.polska@gmail.com</a></span></div>
+          <div class="data-row" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding:.6rem 0"><span style="color:rgba(var(--white-rgb),.5);font-size:.85rem" data-i18n="on_hrs_lbl">Godziny pracy</span><span style="color:white;font-size:.85rem;font-weight:500" data-i18n="on_hrs">Pn-Pt:&nbsp;8:00-17:00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="onas-values">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="val_tag">Wartości</div>
+    <h2 class="section-title" data-i18n="val_title">Na czym budujemy zaufanie</h2>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3 class="value-title" data-i18n="v1t">Bezpośredniość</h3><p class="value-text" data-i18n="v1d">Nie jesteśmy pośrednikami. Odpowiedź bezpośrednio od specjalisty.</p></div>
+      <div class="value-card"><div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="value-title" data-i18n="v2t">Bezpieczeństwo</h3><p class="value-text" data-i18n="v2d">Wysoka polisa ubezpieczeniowa w PZU. Pełna ochrona finansowa.</p></div>
+      <div class="value-card"><div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 class="value-title" data-i18n="v3t">Szybkość</h3><p class="value-text" data-i18n="v3d">Odpowiedź tego samego dnia. Przejrzyste ceny bez ukrytych kosztów.</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CENNIK -->
+<div id="page-cennik" class="page">
+<div class="page-hero"><h1 data-i18n="cn_h1">Cennik</h1><p data-i18n="cn_sub">Przejrzyste ceny bez ukrytych opłat</p></div>
+<section class="cennik-section">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="cn_tag">Pakiety</div>
+    <h2 class="section-title" data-i18n="cn_title">Wybierz pakiet dla swojej firmy</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3 class="price-plan" data-i18n="pl1n">Starter</h3>
+        <div class="price-amount" data-i18n="pl1p">od 350 zł</div>
+        <div class="price-period" data-i18n="pl1per">netto / miesiąc</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-i18n="pl1f1">Do 30 dokumentów/miesiąc</li>
+          <li data-i18n="pl1f2">JPK VAT, deklaracje PIT/CIT</li>
+          <li data-i18n="pl1f3">Obsługa 1 pracownika (ZUS)</li>
+          <li data-i18n="pl1f4">Dostęp do panelu online</li>
+          <li data-i18n="pl1f5">Email i telefon w godz. biurowych</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="showPage('konsultacja')" data-i18n="pl1btn">Zapytaj o ofertę</button>
+      </div>
+      <div class="price-card">
+        <h3 class="price-plan" data-i18n="pl3n">Enterprise</h3>
+        <div class="price-amount" data-i18n="pl3p">Indywidualnie</div>
+        <div class="price-period" data-i18n="pl3per">wycena po analizie</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-i18n="pl3f1">Nieograniczona liczba dokumentów</li>
+          <li data-i18n="pl3f2">Pełna obsługa spółek</li>
+          <li data-i18n="pl3f3">Kadry i płace bez limitu</li>
+          <li data-i18n="pl3f4">Obsługa celna i transportowa</li>
+          <li data-i18n="pl3f5">Obsługa w j. RU/UA/BY</li>
+          <li data-i18n="pl3f6">Priorytetowe wsparcie</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="showPage('konsultacja')" data-i18n="pl3btn">Umów konsultację</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cennik-faq">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="faq_tag">FAQ</div>
+    <h2 class="section-title" data-i18n="faq_title">Najczęstsze pytania</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq1q">Czy cena jest stała?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-i18n="faq1a">Cena ustalana jest w umowie i nie zmienia się bez Twojej zgody.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq2q">Czy mogę zrezygnować w dowolnym momencie?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-i18n="faq2a">Tak. Umowę można rozwiązać z miesięcznym wypowiedzeniem.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq3q">Czy obsługujecie firmy zagraniczne?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-i18n="faq3a">Tak, to nasza specjalność — mamy ponad 30 lat doświadczenia w obsłudze firm zagranicznych.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq4q">Jak wygląda przejście od poprzedniego biura?</span><span class="faq-arrow">&#9660;</span></div><div class="faq-a" data-i18n="faq4a">Zajmujemy się całym procesem przejęcia ksiąg i dokumentacji.</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- KONSULTACJA -->
+<div id="page-konsultacja" class="page">
+<div class="page-hero"><h1 data-i18n="kn_h1">Bezpłatna konsultacja</h1><p data-i18n="kn_sub">Wypełnij formularz — oddzwonimy tego samego dnia</p></div>
+<section class="cta-section cta-section-compact">
+  <div class="cta-inner" style="max-width:600px">
+    <div class="section-tag" data-i18n="kn_tag">Formularz kontaktowy</div>
+    <h2 class="section-title" style="color:var(--navy)" data-i18n="kn_title">Napisz do nas</h2>
+    <p class="cta-sub" data-i18n="kn_stxt">Pierwsza konsultacja jest bezpłatna i bez zobowiązań</p>
+    <div class="konsultacja-form">
+      <div class="form-row">
+        <div class="form-group"><label for="f-name" data-i18n="f_name">Imię *</label><input type="text" id="f-name" placeholder="Jan" autocomplete="given-name"></div>
+        <div class="form-group"><label for="f-phone" data-i18n="f_phone">Telefon *</label><input type="tel" id="f-phone" placeholder="+48 601 234 567" autocomplete="tel"></div>
+      </div>
+      <div class="form-group"><label for="f-email" data-i18n="f_email">Email *</label><input type="email" id="f-email" placeholder="jan@firma.pl" autocomplete="email"></div>
+      <div class="form-group"><label for="f-type" data-i18n="f_type">Rodzaj działalności (opcjonalnie)</label>
+        <select id="f-type">
+          <option data-i18n="ft0">-- wybierz --</option>
+          <option data-i18n="ft1">Jednoosobowa działalność</option>
+          <option data-i18n="ft2">Spółka z o.o.</option>
+          <option data-i18n="ft3">Firma zagraniczna w Polsce</option>
+          <option data-i18n="ft4">Firma transportowa</option>
+          <option data-i18n="ft5">Inne</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="f-msg" data-i18n="f_msg">Wiadomość (opcjonalnie)</label><textarea id="f-msg" placeholder="Opisz czego potrzebujesz..."></textarea></div>
+      <div class="form-check">
+        <input type="checkbox" id="f-rodo">
+        <label for="f-rodo" data-i18n="f_rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z<a href="#" onclick="showPage('rodo')" style="color:var(--gold)" data-i18n="f_rodo_lnk">Polityką Prywatności</a>.</label>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center" id="submit-btn" onclick="submitForm()" data-i18n="f_send">Wyślij zapytanie</button>
+      <div class="form-success" id="form-success" data-i18n="f_ok">Dziękujemy! Oddzwonimy tego samego dnia.</div>
+      <div class="form-error" id="form-error" data-i18n="f_err">Błąd wysyłania. Proszę spróbować ponownie lub zadzwonić.</div>
+    </div>
+    <div class="cta-contact-row" style="margin-top:2rem">
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg> <a href="tel:+48222019495">+48&nbsp;222&nbsp;019&nbsp;495</a></div>
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> <a href="tel:+48602507422">+48&nbsp;602&nbsp;507&nbsp;422</a></div>
+      <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:buchalteria.polska@gmail.com">buchalteria.polska@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- RODO -->
+<div id="page-rodo" class="page">
+<div class="page-hero"><h1 data-i18n="rd_h1">Polityka Prywatności</h1><p>RODO / GDPR</p></div>
+<section class="rodo-section">
+  <div class="rodo-content">
+    <h2 data-i18n="rd_s1">Administrator danych osobowych</h2>
+    <p data-i18n="rd_p1"><strong>Buchalteria Polska Sp. z o.o.</strong>, aleja Bohaterów Września 18 lok. 42, 02-389 Warszawa. Email: buchalteria.polska@gmail.com</p>
+    <h2 data-i18n="rd_s2">Jakie dane przetwarzamy</h2>
+    <ul><li data-i18n="rd_l1">Imię i nazwisko</li><li data-i18n="rd_l2">Adres email</li><li data-i18n="rd_l3">Numer telefonu</li><li data-i18n="rd_l4">Dane dotyczące działalności gospodarczej</li></ul>
+    <h2 data-i18n="rd_s3">Cel przetwarzania danych</h2>
+    <p data-i18n="rd_p2">Dane przetwarzamy w celu udzielenia odpowiedzi na zapytania i realizacji umów.</p>
+    <h2 data-i18n="rd_s4">Twoje prawa</h2>
+    <ul><li data-i18n="rd_r1">Prawo dostępu do danych</li><li data-i18n="rd_r2">Prawo do sprostowania</li><li data-i18n="rd_r3">Prawo do usunięcia</li><li data-i18n="rd_r4">Prawo do cofnięcia zgody</li></ul>
+    <p style="margin-top:2rem;font-size:.8rem" data-i18n="rd_upd">Ostatnia aktualizacja: czerwiec 2026</p>
+  </div>
+</section>
+</div>
+</main>
+
+<footer>
+  <div class="footer-logo" onclick="showPage('home')" onkeydown="if(event.key==='Enter')showPage('home')" tabindex="0" role="link" aria-label="Buchalteria Polska - Strona glowna">Buchalteria<span>Polska</span> Sp. z o.o.</div>
+  <div class="footer-copy" data-i18n="ft_copy">2026 Buchalteria Polska – Warszawa</div>
+  <div class="footer-links">
+    <a onclick="showPage('rodo')" data-i18n="ft_rodo">Polityka prywatności</a>
+    <a onclick="showPage('konsultacja')" data-i18n="ft_cta">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+const T = {
+pl:{
+  wa_tooltip:"Napisz na WhatsApp",
+  nav_home:"Start",nav_onas:"O nas",nav_cennik:"Cennik",nav_konsultacja:"Konsultacja",nav_cta:"Zadzwoń teraz",
+  hero_tag:"Biuro rachunkowe – Warszawa",hero_h1a:"Księgowość, która chroni Twoją firmę",hero_h1b:"przed błędami i karami",hero_h1c:"30 lat doświadczenia na rynku",
+  hero_sub:"Kompleksowa obsługa księgowa dla firm zagranicznych i polskich przedsiębiorców. Precyzja. Terminowość. Bezpieczeństwo.",
+  hero_btn1:"Umów bezpłatną konsultację",hero_btn2:"Zobacz cennik",
+  stat1:"Lat doświadczenia",stat2:"Języki obsługi",stat3:"Międzynarodowych firm",stat4:"sumy gwarancyjnej OC",
+  trust1:"30+ lat doświadczenia",trust2:"Wysoka polisa OC",trust3:"Własne biuro – 2 sale konferencyjne",trust4:"PL - RU - UA - BY",
+  srv_tag:"Oferta",srv_title:"Kompleksowe usługi rachunkowe",srv_sub:"Dobieramy rozwiązania do specyfiki Twojej firmy",
+  s1t:"Księgowość pod klucz",s1d:"Przejmujemy wszystko: księgowość, JPK, VAT, PIT, CIT, kadry i roczne raporty.",
+  s2t:"Obsługa firm zagranicznych",s2d:"30+ lat obsługi zagranicznych firm w Polsce. Pomagamy w rejestracji i zmianach firmy, prowadzimy księgowość i kadry oraz zapewniamy pełną obsługę.",
+  s3t:"Prawnicy i doradcy podatkowi",s3d:"Prawo korporacyjne, umowy, spory, kontrole, legalizacja pobytu i zezwolenia na pracę.",
+  s4t:"Firmy transportowe",s4d:"Licencje na transport, wypisy, dokumenty dla GITD, ewidencja kierowców.",
+  s5t:"Adres prawny i korespondencja",s5d:"Udostępniamy adres w Warszawie do rejestracji firmy. Odbieramy i przekazujemy korespondencję.",
+  s6t:"Audyt i konsultacje księgowe",s6d:"Sprawdzamy księgi i rozliczenia VAT, PIT i CIT, pomagamy w wyborze formy opodatkowania oraz interpretacji przepisów.",
+  why_title:"Dlaczego klienci zostają z nami latami?",
+  why_text:"Nie jesteśmy pośrednikami — jesteśmy wykonawcami. Pracujemy bez problemów z US, ZUS, GITD, KRS, CEIDG.",
+  why_badge:"Wysoka polisa ubezpieczeniowa w PZU",
+  why_tag:"Nasze przewagi",why_h2:"Zaufanie budujemy na wynikach",
+  r1t:"30+ lat doświadczenia międzynarodowego",r1d:"Obsługujemy zagraniczne firmy w Polsce od ponad 30 lat.",
+  r2t:"Własne biuro z salami konferencyjnymi",r2d:"Klienci mogą przyjeżdżać na spotkania i prowadzić negocjacje osobiście.",
+  r3t:"Szybka reakcja — odpowiedź tego samego dnia",r3d:"Jesteśmy zawsze dostępni: WhatsApp, telefon, email.",
+  r4t:"4 języki: PL, UA, BY, RU",r4d:"Wyjaśniamy zasady prostym językiem — bez barier językowych.",
+  ind_tag:"Branże",ind_title:"Znamy specyfikę Twojej branży",
+  ind1:"Transport i logistyka",ind2:"Budownictwo",ind3:"Import / Eksport",ind4:"Firmy zagraniczne",ind5:"Cudzoziemcy w Polsce",ind6:"Rejestracja firm",
+  proc_tag:"Jak zaczynamy",proc_title:"Cztery kroki do spokoju finansowego",
+  p1t:"Bezpłatna konsultacja",p1d:"Omawiamy potrzeby Twojej firmy.",
+  p2t:"Oferta i umowa",p2d:"Indywidualna wycena i umowa z jasnym zakresem.",
+  p3t:"Przekazanie dokumentów",p3d:"Przenosimy księgi od poprzedniego biura.",
+  p4t:"Bieżąca obsługa",p4d:"Miesięczne raporty, terminowe deklaracje.",
+  cta_tag:"Kontakt",cta_title:"Zacznij z bezpłatną konsultacją dziś",cta_sub:"Odpowiadamy tego samego dnia. Bez zobowiązań.",cta_btn:"Umów bezpłatną konsultację",
+  on_h1:"O nas",on_sub:"30+ lat doświadczenia w obsłudze firm",on_tag:"Nasza historia",
+  on_p1:"Biuro rachunkowe Buchalteria Polska ma <strong>ponad 30 lat doświadczenia</strong> w obsłudze firm. Obsługujemy ponad <strong>80 międzynarodowych firm</strong> i posiadamy <strong>1&nbsp;000&nbsp;000&nbsp;zł sumy gwarancyjnej OC</strong>. Specjalizujemy się w obsłudze zagranicznych firm zarejestrowanych w Polsce.",
+  on_p2:"Posiadamy własne biuro w Warszawie z <strong>dwiema salami konferencyjnymi</strong>. Klienci mogą przyjeżdżać na spotkania i prowadzić negocjacje osobiście.",
+  on_p3:"Oferujemy obsługę w językach: <strong>polskim, ukraińskim, białoruskim i rosyjskim</strong>.",
+  on_p4:"Udostępniamy nasz adres jako <strong>oficjalny adres rejestracyjny firmy</strong>. Odbieramy całą korespondencję i przekazujemy klientom.",
+  on_data_tag:"Dane firmy",on_name_lbl:"Nazwa",on_addr_lbl:"Adres",on_tel_lbl:"Telefon",on_mob_lbl:"Komórka / WhatsApp",on_hrs_lbl:"Godziny pracy",on_hrs:"Pn-Pt:&nbsp;8:00-17:00",
+  val_tag:"Wartości",val_title:"Na czym budujemy zaufanie",
+  v1t:"Bezpośredniość",v1d:"Nie jesteśmy pośrednikami. Odpowiedź bezpośrednio od specjalisty.",
+  v2t:"Bezpieczeństwo",v2d:"Wysoka polisa ubezpieczeniowa w PZU. Pełna ochrona finansowa.",
+  v3t:"Szybkość",v3d:"Odpowiedź tego samego dnia. Przejrzyste ceny bez ukrytych kosztów.",
+  
+  cn_h1:"Cennik",cn_sub:"Przejrzyste ceny bez ukrytych opłat",cn_tag:"Pakiety",cn_title:"Wybierz pakiet dla swojej firmy",
+  pl1n:"Starter",pl1p:"od 350 zł",pl1per:"netto / miesiąc",pl1btn:"Zapytaj o ofertę",
+  pl1f1:"Do 30 dokumentów/miesiąc",pl1f2:"JPK VAT, deklaracje PIT/CIT",pl1f3:"Obsługa 1 pracownika (ZUS)",pl1f4:"Dostęp do panelu online",pl1f5:"Email i telefon w godz. biurowych",
+  pl3n:"Enterprise",pl3p:"Indywidualnie",pl3per:"wycena po analizie",pl3btn:"Umów konsultację",
+  pl3f1:"Nieograniczona liczba dokumentów",pl3f2:"Pełna obsługa spółek",pl3f3:"Kadry i płace bez limitu",pl3f4:"Obsługa celna i transportowa",pl3f5:"Obsługa w j. RU/UA/BY",pl3f6:"Priorytetowe wsparcie",
+  faq_tag:"FAQ",faq_title:"Najczęstsze pytania",
+  faq1q:"Czy cena jest stała?",faq1a:"Cena ustalana jest w umowie i nie zmienia się bez Twojej zgody.",
+  faq2q:"Czy mogę zrezygnować w dowolnym momencie?",faq2a:"Tak. Umowę można rozwiązać z miesięcznym wypowiedzeniem.",
+  faq3q:"Czy obsługujecie firmy zagraniczne?",faq3a:"Tak, to nasza specjalność — mamy ponad 30 lat doświadczenia w obsłudze firm zagranicznych.",
+  faq4q:"Jak wygląda przejście od poprzedniego biura?",faq4a:"Zajmujemy się całym procesem przejęcia ksiąg i dokumentacji.",
+  kn_h1:"Bezpłatna konsultacja",kn_sub:"Wypełnij formularz — oddzwonimy tego samego dnia",kn_tag:"Formularz kontaktowy",kn_title:"Napisz do nas",kn_stxt:"Pierwsza konsultacja jest bezpłatna i bez zobowiązań",
+  f_name:"Imię *",f_phone:"Telefon *",f_email:"Email *",f_type:"Rodzaj działalności (opcjonalnie)",
+  ft0:"-- wybierz --",ft1:"Jednoosobowa działalność",ft2:"Spółka z o.o.",ft3:"Firma zagraniczna w Polsce",ft4:"Firma transportowa",ft5:"Inne",
+  f_msg:"Wiadomość (opcjonalnie)",f_rodo:"Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z",f_rodo_lnk:"Polityką Prywatności",
+  f_send:"Wyślij zapytanie",f_ok:"Dziękujemy! Oddzwonimy tego samego dnia.",f_err:"Błąd wysyłania. Proszę spróbować ponownie lub zadzwonić.",f_required:"Proszę wypełnić wszystkie wymagane pola.",f_rodo_required:"Proszę zaakceptować zgodę na przetwarzanie danych.",
+  rd_h1:"Polityka Prywatności",rd_s1:"Administrator danych osobowych",
+  rd_p1:"<strong>Buchalteria Polska Sp. z o.o.</strong>, aleja Bohaterów Września 18 lok. 42, 02-389 Warszawa. Email: buchalteria.polska@gmail.com",
+  rd_s2:"Jakie dane przetwarzamy",rd_l1:"Imię i nazwisko",rd_l2:"Adres email",rd_l3:"Numer telefonu",rd_l4:"Dane dotyczące działalności gospodarczej",
+  rd_s3:"Cel przetwarzania danych",rd_p2:"Dane przetwarzamy w celu udzielenia odpowiedzi na zapytania i realizacji umów.",
+  rd_s4:"Twoje prawa",rd_r1:"Prawo dostępu do danych",rd_r2:"Prawo do sprostowania",rd_r3:"Prawo do usunięcia",rd_r4:"Prawo do cofnięcia zgody",
+  rd_upd:"Ostatnia aktualizacja: czerwiec 2026",
+  ft_copy:"2026 Buchalteria Polska – Warszawa",ft_rodo:"Polityka prywatności",ft_cta:"Kontakt"
+},
+ru:{
+  wa_tooltip:"Написать в WhatsApp",
+  nav_home:"Главная",nav_onas:"О нас",nav_cennik:"Цены",nav_konsultacja:"Консультация",nav_cta:"Позвоните нам",
+  hero_tag:"Бухгалтерское бюро – Варшава",hero_h1a:"Бухгалтерия, которая защищает вашу компанию",hero_h1b:"от ошибок и штрафов",hero_h1c:"30 лет опыта на рынке",
+  hero_sub:"Комплексное бухгалтерское обслуживание иностранных и польских компаний. Точность. Своевременность. Надёжность.",
+  hero_btn1:"Записаться на бесплатную консультацию",hero_btn2:"Посмотреть цены",
+  stat1:"Лет опыта",stat2:"Языка обслуживания",stat3:"Международных компаний",stat4:"страхового покрытия по полису ответственности",
+  trust1:"30+ лет опыта",trust2:"Высокий страховой полис OC",trust3:"Собственный офис – 2 конференц-зала",trust4:"PL - RU - UA - BY",
+  srv_tag:"Услуги",srv_title:"Комплексные бухгалтерские услуги",srv_sub:"Подбираем решения под специфику вашей компании",
+  s1t:"Бухгалтерия под ключ",s1d:"Берём на себя всё: бухгалтерию, JPK, НДС, НДФЛ, налог на прибыль, кадры и годовые отчёты.",
+  s2t:"Обслуживание иностранных компаний",s2d:"30+ лет обслуживаем иностранные компании в Польше. Помогаем с регистрацией и изменениями компании, ведём бухгалтерию и кадровый учёт, обеспечиваем полный комплекс услуг.",
+  s3t:"Юристы и налоговые консультанты",s3d:"Корпоративное право, договоры, споры, проверки, легализация пребывания и разрешения на работу.",
+  s4t:"Транспортные компании",s4d:"Лицензии на перевозки, выписки, документы для GITD, учёт водителей.",
+  s5t:"Юридический адрес и корреспонденция",s5d:"Предоставляем адрес в Варшаве для регистрации компании. Получаем и передаём корреспонденцию.",
+  s6t:"Аудит и бухгалтерские консультации",s6d:"Проверяем бухгалтерские книги и расчёты VAT, PIT и CIT, помогаем выбрать форму налогообложения и разобраться в законодательстве.",
+  why_title:"Почему клиенты остаются с нами годами?",
+  why_text:"Мы не посредники — мы исполнители. Работаем без проблем с US, ZUS, GITD, KRS, CEIDG.",
+  why_badge:"Высокий страховой полис в PZU",
+  why_tag:"Наши преимущества",why_h2:"Доверие строим на результатах",
+  r1t:"30+ лет международного опыта",r1d:"Обслуживаем иностранные компании в Польше уже более 30 лет.",
+  r2t:"Собственный офис с конференц-залами",r2d:"Клиенты могут приезжать на встречи и вести переговоры лично в Варшаве.",
+  r3t:"Быстрая реакция — ответ в тот же день",r3d:"Мы всегда доступны: WhatsApp, телефон, email.",
+  r4t:"4 языка: PL, UA, BY, RU",r4d:"Объясняем правила простым языком — без языковых барьеров.",
+  ind_tag:"Отрасли",ind_title:"Знаем специфику вашей отрасли",
+  ind1:"Транспорт и логистика",ind2:"Строительство",ind3:"Импорт / Экспорт",ind4:"Иностранные компании",ind5:"Иностранцы в Польше",ind6:"Регистрация компаний",
+  proc_tag:"Как начинаем",proc_title:"Четыре шага к финансовому спокойствию",
+  p1t:"Бесплатная консультация",p1d:"Обсуждаем потребности вашей компании.",
+  p2t:"Предложение и договор",p2d:"Индивидуальная оценка и договор с чётким объёмом.",
+  p3t:"Передача документов",p3d:"Переносим книги от предыдущего бюро.",
+  p4t:"Текущее обслуживание",p4d:"Ежемесячные отчёты, своевременные декларации.",
+  cta_tag:"Контакт",cta_title:"Начните с бесплатной консультации сегодня",cta_sub:"Отвечаем в тот же день. Без обязательств.",cta_btn:"Записаться на консультацию",
+  on_h1:"О нас",on_sub:"30+ лет опыта в обслуживании компаний",on_tag:"Наша история",
+  on_p1:"Бухгалтерское бюро Buchalteria Polska имеет <strong>более 30 лет опыта</strong> в обслуживании компаний. Обслуживаем более <strong>80 международных компаний</strong> и имеем <strong>1&nbsp;000&nbsp;000&nbsp;zł страхового покрытия по полису ответственности</strong>. Специализируемся на обслуживании иностранных компаний, зарегистрированных в Польше.",
+  on_p2:"Имеем собственный офис в Варшаве с <strong>двумя конференц-залами</strong>. Клиенты могут приезжать на встречи и вести переговоры лично.",
+  on_p3:"Предлагаем обслуживание на языках: <strong>польском, украинском, белорусском и русском</strong>.",
+  on_p4:"Предоставляем наш адрес как <strong>официальный юридический адрес компании</strong>. Получаем всю корреспонденцию и передаём её клиентам.",
+  on_data_tag:"Данные компании",on_name_lbl:"Название",on_addr_lbl:"Адрес",on_tel_lbl:"Телефон",on_mob_lbl:"Мобильный / WhatsApp",on_hrs_lbl:"Часы работы",on_hrs:"Пн-Пт:&nbsp;8:00-17:00",
+  val_tag:"Ценности",val_title:"На чём строим доверие",
+  v1t:"Непосредственность",v1d:"Мы не посредники. Профессиональный ответ напрямую от специалиста.",
+  v2t:"Безопасность",v2d:"Высокий страховой полис в PZU. Полная финансовая защита клиентов.",
+  v3t:"Скорость",v3d:"Ответ в тот же день. Прозрачные цены без скрытых расходов.",
+  
+  cn_h1:"Цены",cn_sub:"Прозрачные цены без скрытых платежей",cn_tag:"Пакеты",cn_title:"Выберите пакет для своей компании",
+  pl1n:"Стартер",pl1p:"от 350 зл",pl1per:"нетто / месяц",pl1btn:"Узнать о предложении",
+  pl1f1:"До 30 документов/месяц",pl1f2:"JPK НДС, декларации",pl1f3:"Обслуживание 1 сотрудника (ZUS)",pl1f4:"Доступ к онлайн-панели",pl1f5:"Email и телефон в рабочие часы",
+  pl3n:"Предприятие",pl3p:"Индивидуально",pl3per:"оценка после анализа",pl3btn:"Записаться на консультацию",
+  pl3f1:"Неограниченное количество документов",pl3f2:"Полное обслуживание компаний",pl3f3:"Кадры и зарплата без ограничений",pl3f4:"Таможенное и транспортное обслуживание",pl3f5:"Обслуживание RU/UA/BY",pl3f6:"Приоритетная поддержка",
+  faq_tag:"FAQ",faq_title:"Часто задаваемые вопросы",
+  faq1q:"Является ли цена фиксированной?",faq1a:"Цена устанавливается в договоре и не меняется без вашего согласия.",
+  faq2q:"Могу ли я отказаться в любой момент?",faq2a:"Да. Договор можно расторгнуть с месячным уведомлением.",
+  faq3q:"Обслуживаете ли иностранные компании?",faq3a:"Да, это наша специализация — у нас более 30 лет опыта в обслуживании иностранных компаний.",
+  faq4q:"Как происходит переход от предыдущего бюро?",faq4a:"Мы берём на себя весь процесс передачи книг и документации.",
+  kn_h1:"Бесплатная консультация",kn_sub:"Заполните форму — перезвоним в тот же день",kn_tag:"Контактная форма",kn_title:"Напишите нам",kn_stxt:"Первая консультация бесплатна и без обязательств",
+  f_name:"Имя *",f_phone:"Телефон *",f_email:"Email *",f_type:"Вид деятельности (необязательно)",
+  ft0:"-- выберите --",ft1:"Индивидуальный предприниматель",ft2:"ООО",ft3:"Иностранная компания в Польше",ft4:"Транспортная компания",ft5:"Другое",
+  f_msg:"Сообщение (необязательно)",f_rodo:"Я даю согласие на обработку моих персональных данных согласно",f_rodo_lnk:"Политике конфиденциальности",
+  f_send:"Отправить запрос",f_ok:"Спасибо! Перезвоним в тот же рабочий день.",f_err:"Ошибка отправки. Попробуйте ещё раз или позвоните.",f_required:"Пожалуйста, заполните все обязательные поля.",f_rodo_required:"Пожалуйста, примите согласие на обработку данных.",
+  rd_h1:"Политика конфиденциальности",rd_s1:"Администратор персональных данных",
+  rd_p1:"<strong>Buchalteria Polska Sp. z o.o.</strong>, aleja Bohaterów Września 18 lok. 42, 02-389 Warszawa. Email: buchalteria.polska@gmail.com",
+  rd_s2:"Какие данные мы обрабатываем",rd_l1:"Имя и фамилия",rd_l2:"Адрес email",rd_l3:"Номер телефона",rd_l4:"Данные о деятельности",
+  rd_s3:"Цель обработки данных",rd_p2:"Данные обрабатываем с целью ответа на запросы и выполнения договоров.",
+  rd_s4:"Ваши права",rd_r1:"Право доступа к данным",rd_r2:"Право на исправление данных",rd_r3:"Право на удаление данных",rd_r4:"Право отозвать согласие",
+  rd_upd:"Последнее обновление: июнь 2026",
+  ft_copy:"2026 Buchalteria Polska – Варшава",ft_rodo:"Политика конфиденциальности",ft_cta:"Контакт"
+}
+};
+
+let lang = localStorage.getItem("bp_lang") || "pl";
+let currentPage = localStorage.getItem("bp_page") || "home";
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem("bp_lang", l);
+  document.documentElement.lang = l === 'pl' ? 'pl' : 'ru';
+  document.querySelectorAll(".lang-btn").forEach(b => {
+    b.classList.remove("active");
+    if ((b.textContent === "PL" && l === "pl") || (b.textContent === "RU" && l === "ru")) b.classList.add("active");
+  });
+  applyT();
+}
+
+function applyT() {
+  const t = T[lang];
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+}
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page-" + id).classList.add("active");
+  document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
+  const n = document.getElementById("nav-" + id);
+  if (n) n.classList.add("active");
+  window.scrollTo({top: 0, behavior: "smooth"});
+localStorage.setItem("bp_page", id);
+  const nav = document.getElementById("navbar");
+  nav.classList.toggle("dark", id !== "home");
+  closeMobileMenu();
+  setTimeout(() => document.querySelectorAll(".fade-up").forEach(el => { if (isVis(el)) el.classList.add("visible"); }), 100);
+}
+
+function toggleMobileMenu() {
+  const links = document.getElementById("nav-links");
+  const burger = document.getElementById("nav-burger");
+  const overlay = document.getElementById("nav-overlay");
+  const open = links.classList.toggle("mobile-open");
+  overlay.classList.toggle("visible", open);
+  burger.classList.toggle("open", open);
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+  document.body.classList.toggle("menu-open", open);
+}
+
+function closeMobileMenu() {
+  document.getElementById("nav-links").classList.remove("mobile-open");
+  document.getElementById("nav-overlay").classList.remove("visible");
+  document.getElementById("nav-burger").classList.remove("open");
+  document.getElementById("nav-burger").setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeMobileMenu(); });
+window.addEventListener("resize", () => { if (window.innerWidth > 900) closeMobileMenu(); });
+
+function isVis(el) { const r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
+
+window.addEventListener("scroll", () => {
+  const ap = document.querySelector(".page.active");
+  if (ap && ap.id === "page-home") document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 60);
+  document.querySelectorAll(".fade-up").forEach(el => { if (isVis(el)) el.classList.add("visible"); });
+});
+
+function toggleFaq(el) {
+  el.parentElement.classList.toggle("open");
+  const expanded = el.parentElement.classList.contains("open");
+  el.setAttribute("aria-expanded", expanded ? "true" : "false");
+}
+
+async function submitForm() {
+  const nameEl = document.getElementById("f-name");
+  const phoneEl = document.getElementById("f-phone");
+  const emailEl = document.getElementById("f-email");
+  const rodoEl = document.getElementById("f-rodo");
+  const errBox = document.getElementById("form-error");
+  const t = T[lang];
+
+  [nameEl, phoneEl, emailEl].forEach(el => el.classList.remove("invalid"));
+
+  const missing = [nameEl, phoneEl, emailEl].filter(el => !el.value.trim());
+  if (missing.length) {
+    missing.forEach(el => el.classList.add("invalid"));
+    errBox.textContent = t.f_required;
+    errBox.style.display = "block";
+    missing[0].focus();
+    return;
+  }
+  if (!rodoEl.checked) {
+    errBox.textContent = t.f_rodo_required;
+    errBox.style.display = "block";
+    rodoEl.focus();
+    return;
+  }
+  errBox.style.display = "none";
+
+  const btn = document.getElementById("submit-btn");
+  btn.textContent = lang === "ru" ? "Отправка..." : "Wysylanie...";
+  btn.disabled = true;
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify({
+        access_key: "fda2cd69-df69-47e6-b8d4-d7218f19b92c",
+        subject: "Nowe zapytanie — Buchalteria Polska",
+        from_name: "Buchalteria Polska Website",
+        name: nameEl.value.trim(), email: emailEl.value.trim(), phone: phoneEl.value.trim(),
+        type: document.getElementById("f-type").value,
+        message: document.getElementById("f-msg").value || "(brak)",
+        lang
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById("form-success").style.display = "block";
+      errBox.style.display = "none";
+      btn.style.display = "none";
+      ["f-name","f-phone","f-email","f-type","f-msg"].forEach(id => document.getElementById(id).value = "");
+      rodoEl.checked = false;
+    } else throw new Error();
+  } catch {
+    errBox.textContent = t.f_err;
+    errBox.style.display = "block";
+    btn.textContent = t.f_send;
+    btn.disabled = false;
+  }
+}
+["f-name","f-phone","f-email"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", () => el.classList.remove("invalid"));
+});
+
+setTimeout(() => {
+  setLang(lang);
+  document.querySelectorAll(".fade-up").forEach(el => { if (isVis(el)) el.classList.add("visible"); });
+}, 100);
+
+// === SCROLL PROGRESS ===
+const progressBar = document.createElement('div');
+progressBar.id = 'scroll-progress';
+document.body.prepend(progressBar);
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  progressBar.style.width = Math.min(scrolled, 100) + '%';
+}, { passive: true });
+
+// === ENHANCED FADE UP with IntersectionObserver ===
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      fadeObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+function initFadeObserver() {
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.classList.remove('visible');
+    fadeObserver.observe(el);
+  });
+}
+initFadeObserver();
+
+// === STAT COUNTER ANIMATION ===
+function animateCounter(el) {
+  const text = el.textContent;
+  const num = parseInt(text.replace(/[^0-9]/g,''));
+  if (!num || el.dataset.animated) return;
+  el.dataset.animated = '1';
+  const suffix = text.replace(/[0-9]/g,'');
+  let start = 0;
+  const dur = 1200;
+  const startTime = performance.now();
+  function step(now) {
+    const progress = Math.min((now - startTime) / dur, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * num) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num').forEach(animateCounter);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.hero-stats').forEach(el => statObserver.observe(el));
+
+// === MAGNETIC BUTTON EFFECT ===
+// Bound once via event delegation on document — survives page switches
+// (showPage only toggles visibility, it never recreates these buttons)
+// without re-attaching listeners on every navigation.
+let magneticBtn = null;
+document.addEventListener('mousemove', (e) => {
+  const btn = e.target.closest('.btn-primary, .nav-cta');
+  if (btn !== magneticBtn) {
+    if (magneticBtn) magneticBtn.style.transform = '';
+    magneticBtn = btn;
+  }
+  if (btn) {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translateY(-2px) translate(${x * 0.08}px, ${y * 0.08}px)`;
+  }
+});
+
+// === PAGE TRANSITION with re-init ===
+const _origShowPage = showPage;
+window.showPage = function(id) {
+  _origShowPage(id);
+  setTimeout(initFadeObserver, 50);
+};
+
+// === TILT EFFECT on cards ===
+document.querySelectorAll('.value-card, .why-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = `translateY(-4px)`;
+    card.style.transition = 'transform .1s';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = '';
+  });
+});
+
+
+// === STAGGER industry cards ===
+document.querySelectorAll('.ind-card').forEach((card, i) => {
+  card.style.setProperty('--i', i);
+});
+
+// Parallax disabled
+
+
+
+// === SMOOTH scroll to section on nav click ===
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// === FAQ keyboard accessibility ===
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.setAttribute('tabindex', '0');
+  q.setAttribute('role', 'button');
+  q.setAttribute('aria-expanded', 'false');
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFaq(q);
+    }
+  });
+});
+
+// === FORM label float animation ===
+document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+  input.addEventListener('focus', () => {
+    input.closest('.form-group')?.classList.add('focused');
+  });
+  input.addEventListener('blur', () => {
+    input.closest('.form-group')?.classList.remove('focused');
+  });
+});
+
+// === Animate price features on scroll ===
+const priceObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.price-features li').forEach((li, i) => {
+        li.style.opacity = '0';
+        li.style.transform = 'translateX(-8px)';
+        setTimeout(() => {
+          li.style.transition = 'opacity .4s ease, transform .4s ease';
+          li.style.opacity = '1';
+          li.style.transform = 'translateX(0)';
+        }, 100 + i * 60);
+      });
+      priceObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.price-card').forEach(card => priceObserver.observe(card));
+
+// === Animate why-card number ===
+const whyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bigNum = entry.target.querySelector('.why-big-number');
+      if (bigNum) {
+        bigNum.style.transition = 'opacity 1s ease, transform 1s ease';
+        bigNum.style.opacity = '1';
+        bigNum.style.transform = 'translateY(0)';
+      }
+      whyObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.why-visual').forEach(el => {
+  const bigNum = el.querySelector('.why-big-number');
+  if (bigNum) {
+    bigNum.style.opacity = '0';
+    bigNum.style.transform = 'translateY(20px)';
+  }
+  whyObserver.observe(el);
+});
+
+
+// === SMOOTH SCROLL TO ANCHORS ===
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// === SCROLL REVEAL — enhanced easing ===
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (i % 6) * 0.07 + 's';
+});
+
+</script>
+<!-- ====== ЧАТ-ВІДЖЕТ — вставити цей блок в index.html перед </body> ====== -->
+<!-- Повністю ізольований: власні унікальні id/class, не перетинається з showPage/setLang/submitForm -->
+
+<style>
+  #chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #0D1B2A;
+    box-shadow: 0 4px 16px rgba(13,27,42,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform .2s;
+    border: none;
+  }
+  #chat-bubble:hover { transform: scale(1.06); }
+  #chat-bubble svg { width: 26px; height: 26px; }
+
+  #chat-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    height: 460px;
+    max-height: calc(100vh - 120px);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(13,27,42,.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: 'DM Sans', Arial, sans-serif;
+  }
+  #chat-panel.open { display: flex; }
+
+  #chat-header {
+    background: #0D1B2A;
+    color: #F5EDD5;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  #chat-header .title { font-weight: 600; font-size: .95rem; }
+  #chat-header .subtitle { font-size: .72rem; color: #C9A84C; margin-top: 2px; }
+  #chat-close {
+    background: none; border: none; color: #F5EDD5;
+    font-size: 1.3rem; cursor: pointer; line-height: 1; padding: 4px;
+  }
+
+  #chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #FAFAF8;
+  }
+  .chat-msg {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: .85rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: #0D1B2A;
+    color: #fff;
+    border-bottom-right-radius: 2px;
+  }
+  .chat-msg.assistant {
+    align-self: flex-start;
+    background: #fff;
+    color: #0D1B2A;
+    border: 1px solid rgba(13,27,42,.1);
+    border-bottom-left-radius: 2px;
+  }
+  .chat-msg.error {
+    align-self: center;
+    background: rgba(220,53,69,.1);
+    color: #dc3545;
+    font-size: .8rem;
+  }
+  .chat-msg.typing {
+    align-self: flex-start;
+    background: #fff;
+    border: 1px solid rgba(13,27,42,.1);
+    color: rgba(13,27,42,.4);
+    font-style: italic;
+  }
+
+  #chat-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid rgba(13,27,42,.08);
+    flex-shrink: 0;
+  }
+  #chat-input {
+    flex: 1;
+    resize: none;
+    border: 1px solid rgba(13,27,42,.2);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 16px;
+    font-family: inherit;
+    max-height: 80px;
+  }
+  #chat-send {
+    background: #C9A84C;
+    color: #0D1B2A;
+    border: none;
+    border-radius: 6px;
+    padding: 0 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: .85rem;
+  }
+  #chat-send:disabled { opacity: .5; cursor: default; }
+
+  @media (max-width: 420px) {
+    #chat-panel {
+      right: 10px;
+      left: 10px;
+      width: auto;
+      bottom: 80px;
+    }
+    #chat-bubble { right: 16px; bottom: 16px; }
+  }
+</style>
+
+<button id="chat-bubble" onclick="chatToggle()" aria-label="Otwórz czat">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#F5EDD5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<div id="chat-panel">
+  <div id="chat-header">
+    <div>
+      <div class="title">Zapytaj nas</div>
+      <div class="subtitle">Zwykle odpowiadamy od razu</div>
+    </div>
+    <button id="chat-close" onclick="chatToggle()" aria-label="Zamknij czat">&times;</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div id="chat-input-row">
+    <textarea id="chat-input" rows="1" placeholder="Napisz wiadomość..."></textarea>
+    <button id="chat-send" onclick="chatSend()">Wyślij</button>
+  </div>
+</div>
+
+<script>
+// Ізольований стан чату — не перетинається з жодною іншою змінною сайту
+var chatHistory = [];
+var chatIsOpen = false;
+var chatIsSending = false;
+
+function chatToggle() {
+  chatIsOpen = !chatIsOpen;
+  var panel = document.getElementById('chat-panel');
+  panel.classList.toggle('open', chatIsOpen);
+  if (chatIsOpen) {
+    document.getElementById('chat-input').focus();
+  }
+}
+
+function chatRenderMessage(role, text) {
+  var messagesEl = document.getElementById('chat-messages');
+  var el = document.createElement('div');
+  el.className = 'chat-msg ' + role;
+  el.textContent = text;
+  messagesEl.appendChild(el);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return el;
+}
+
+async function chatSend() {
+  if (chatIsSending) return;
+
+  var input = document.getElementById('chat-input');
+  var text = input.value.trim();
+  if (!text) return;
+
+  chatRenderMessage('user', text);
+  chatHistory.push({ role: 'user', content: text });
+  input.value = '';
+
+  var sendBtn = document.getElementById('chat-send');
+  chatIsSending = true;
+  sendBtn.disabled = true;
+
+  var typingEl = chatRenderMessage('typing', 'Piszemy odpowiedź...');
+
+  try {
+    var response = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory }),
+    });
+
+    var data = await response.json();
+    typingEl.remove();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Błąd serwera');
+    }
+
+    chatRenderMessage('assistant', data.answer);
+    chatHistory.push({ role: 'assistant', content: data.answer });
+  } catch (err) {
+    console.error('Chat error:', err);
+    typingEl.remove();
+    chatRenderMessage('error', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.');
+  } finally {
+    chatIsSending = false;
+    sendBtn.disabled = false;
+  }
+}
+
+// Enter надсилає повідомлення, Shift+Enter — новий рядок
+document.getElementById('chat-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    chatSend();
+  }
+});
+</script>
+
+</body>
+</html>

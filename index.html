@@ -2546,7 +2546,9 @@ document.querySelectorAll('.fade-up').forEach((el, i) => {
     font-size: .85rem;
     line-height: 1.4;
     white-space: pre-wrap;
-    word-break: break-word;
+    word-break: break-word;    overflow-wrap: break-word;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .chat-msg.user {
     align-self: flex-end;
